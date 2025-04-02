@@ -114,7 +114,7 @@
 		9509EB512D9D1B3C0032A1C6 /* h_generics */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = h_generics; sourceTree = BUILT_PRODUCTS_DIR; };
 		9509EB602D9D1BEB0032A1C6 /* i_async */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = i_async; sourceTree = BUILT_PRODUCTS_DIR; };
 		9509EB6F2D9D1BFA0032A1C6 /* j_deep_dive */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = j_deep_dive; sourceTree = BUILT_PRODUCTS_DIR; };
-		9509EBD12D9D3DC60032A1C6 /* c_first_screens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = c_first_screens.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9509EBD12D9D3DC60032A1C6 /* c_first_screens_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = c_first_screens_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9509EC242D9D40010032A1C6 /* a_script */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = a_script; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,11 +141,10 @@
 			membershipExceptions = (
 				d_first_models_app/Assets.xcassets,
 				d_first_models_app/ContentView.swift,
-				d_first_models_app/D_TicTacToeApp.swift,
+				d_first_models_app/FirstModelsApp.swift,
+				d_first_models_app/Models/GameViewModel.swift,
 				d_first_models_app/Models/HighscoreViewModel.swift,
-				d_first_models_app/Models/TicTacToeViewModel.swift,
 				d_first_models_app/Screens/LandingScreen.swift,
-				d_first_models_app/Screens/TicTacToeScreen.swift,
 				d_first_models_app/ViewLib/HeaderText.swift,
 			);
 			target = 9505E8392D998C45004DB066 /* d_first_models_app */;
@@ -209,9 +208,9 @@
 		9509EBFA2D9D3E310032A1C6 /* Exceptions for "a_motivation" folder in "a_first_app" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				a_first_app/A_FirstApp.swift,
 				a_first_app/Assets.xcassets,
 				a_first_app/ContentView.swift,
+				a_first_app/FirstApp.swift,
 			);
 			target = 9505E7FB2D998B62004DB066 /* a_first_app */;
 		};
@@ -219,20 +218,21 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				b_first_views_app/Assets.xcassets,
-				b_first_views_app/B_SimpleViewsApp.swift,
 				b_first_views_app/ContentView.swift,
+				b_first_views_app/FirstViewsApp.swift,
 			);
 			target = 9505E80E2D998BC7004DB066 /* b_first_views_app */;
 		};
-		9509EC0D2D9D3ECC0032A1C6 /* Exceptions for "a_motivation" folder in "c_first_screens" target */ = {
+		9509EC0D2D9D3ECC0032A1C6 /* Exceptions for "a_motivation" folder in "c_first_screens_app" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				c_first_screens/A3_SimpleScreensApp.swift,
 				c_first_screens/Assets.xcassets,
 				c_first_screens/ContentView.swift,
-				c_first_screens/Screens/AllScreens.swift,
+				c_first_screens/FirstScreensApp.swift,
+				c_first_screens/Screens/PlayScreen.swift,
+				c_first_screens/Screens/SettingsScreen.swift,
 			);
-			target = 9509EBD02D9D3DC60032A1C6 /* c_first_screens */;
+			target = 9509EBD02D9D3DC60032A1C6 /* c_first_screens_app */;
 		};
 		9509EC2E2D9D400D0032A1C6 /* Exceptions for "b_swift" folder in "a_script" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -284,7 +284,7 @@
 			exceptions = (
 				9509EBFA2D9D3E310032A1C6 /* Exceptions for "a_motivation" folder in "a_first_app" target */,
 				9509EC002D9D3E3F0032A1C6 /* Exceptions for "a_motivation" folder in "b_first_views_app" target */,
-				9509EC0D2D9D3ECC0032A1C6 /* Exceptions for "a_motivation" folder in "c_first_screens" target */,
+				9509EC0D2D9D3ECC0032A1C6 /* Exceptions for "a_motivation" folder in "c_first_screens_app" target */,
 				9509EB012D9C36830032A1C6 /* Exceptions for "a_motivation" folder in "d_first_models_app" target */,
 			);
 			path = a_motivation;
@@ -430,7 +430,7 @@
 				9509EB512D9D1B3C0032A1C6 /* h_generics */,
 				9509EB602D9D1BEB0032A1C6 /* i_async */,
 				9509EB6F2D9D1BFA0032A1C6 /* j_deep_dive */,
-				9509EBD12D9D3DC60032A1C6 /* c_first_screens.app */,
+				9509EBD12D9D3DC60032A1C6 /* c_first_screens_app.app */,
 				9509EC242D9D40010032A1C6 /* a_script */,
 			);
 			name = Products;
@@ -686,9 +686,9 @@
 			productReference = 9509EB6F2D9D1BFA0032A1C6 /* j_deep_dive */;
 			productType = "com.apple.product-type.tool";
 		};
-		9509EBD02D9D3DC60032A1C6 /* c_first_screens */ = {
+		9509EBD02D9D3DC60032A1C6 /* c_first_screens_app */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9509EBDC2D9D3DC70032A1C6 /* Build configuration list for PBXNativeTarget "c_first_screens" */;
+			buildConfigurationList = 9509EBDC2D9D3DC70032A1C6 /* Build configuration list for PBXNativeTarget "c_first_screens_app" */;
 			buildPhases = (
 				9509EBCD2D9D3DC60032A1C6 /* Sources */,
 				9509EBCE2D9D3DC60032A1C6 /* Frameworks */,
@@ -698,11 +698,11 @@
 			);
 			dependencies = (
 			);
-			name = c_first_screens;
+			name = c_first_screens_app;
 			packageProductDependencies = (
 			);
 			productName = c_first_screens;
-			productReference = 9509EBD12D9D3DC60032A1C6 /* c_first_screens.app */;
+			productReference = 9509EBD12D9D3DC60032A1C6 /* c_first_screens_app.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9509EC232D9D40010032A1C6 /* a_script */ = {
@@ -797,7 +797,7 @@
 			targets = (
 				9505E7FB2D998B62004DB066 /* a_first_app */,
 				9505E80E2D998BC7004DB066 /* b_first_views_app */,
-				9509EBD02D9D3DC60032A1C6 /* c_first_screens */,
+				9509EBD02D9D3DC60032A1C6 /* c_first_screens_app */,
 				9505E8392D998C45004DB066 /* d_first_models_app */,
 				9509EC232D9D40010032A1C6 /* a_script */,
 				9505E8732D99F223004DB066 /* b_core_types */,
@@ -1008,10 +1008,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1048,6 +1049,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.a-first-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1092,10 +1094,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1125,6 +1128,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.a-first-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1169,11 +1173,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "\"b_views_app/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1208,8 +1212,9 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.b-views-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.b-first-views-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1254,11 +1259,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"b_views_app/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1286,8 +1291,9 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.b-views-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.b-first-views-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1332,11 +1338,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "\"c_screens_app/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1371,8 +1377,9 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.c-screens-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.d-first-models-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1417,11 +1424,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"c_screens_app/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1449,8 +1456,9 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.c-screens-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.d-first-models-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2774,11 +2782,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "\"c_first_screens/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2813,8 +2821,9 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.c-first-screens";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.c-first-screens-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2859,11 +2868,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"c_first_screens/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2891,8 +2900,9 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.c-first-screens";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.c-first-screens-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -3155,7 +3165,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9509EBDC2D9D3DC70032A1C6 /* Build configuration list for PBXNativeTarget "c_first_screens" */ = {
+		9509EBDC2D9D3DC70032A1C6 /* Build configuration list for PBXNativeTarget "c_first_screens_app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9509EBDD2D9D3DC70032A1C6 /* Debug */,
