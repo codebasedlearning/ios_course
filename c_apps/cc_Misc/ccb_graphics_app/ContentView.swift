@@ -16,8 +16,11 @@ struct ContentView: View {
             SpritesScreen().tabItem {
                 Label("Boxes", systemImage: "3.circle")
             }.tag(2)
-            MazeScreen().tabItem {
-                Label("Maze", systemImage: "4.circle")
+            MazeScreen1().tabItem {
+                Label("Maze 1", systemImage: "4.circle")
+            }.tag(3)
+            MazeScreen2().tabItem {
+                Label("Maze 2", systemImage: "5.circle")
             }.tag(3)
             //ARScreen().tabItem {
             //    Label("AR", systemImage: "4.circle")

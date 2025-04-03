@@ -19,6 +19,9 @@ struct ContentView: View {
             ImagesScreen().tabItem {
                 Label("Images", systemImage: "photo.artframe")
             }.tag(3)
+            ArrayScreen().tabItem {
+                Label("Grids", systemImage: "square.grid.4x3.fill")
+            }.tag(4)
         }
         .tint(.mint)
         .onAppear { selectedTab = 0 }

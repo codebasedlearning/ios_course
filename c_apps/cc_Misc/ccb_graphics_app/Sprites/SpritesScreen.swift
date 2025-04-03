@@ -5,7 +5,7 @@ import SpriteKit
 
 struct SpritesScreen: View {
     var scene: SKScene {
-        let scene = GameScene()
+        let scene = GameScene1()
         scene.size = CGSize(width: 300, height: 450)
         scene.scaleMode = .fill
         return scene
@@ -39,7 +39,7 @@ struct SpritesScreen: View {
  A scene is the root node of your content.
  It is used to display SpriteKit content on an SKView.
  */
-class GameScene: SKScene {
+class GameScene1: SKScene {
     var bar: SKSpriteNode!
     var wall1: SKSpriteNode!
     
