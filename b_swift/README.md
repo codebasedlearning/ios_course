@@ -1,16 +1,10 @@
 [© 2025, A.Voß, FH Aachen, codebasedlearning.dev](mailto:info@codebasedlearning.dev)
 
-# `swift_course`
+# iOS Course
 
+## Swift Topics 
 
-## Motivation
-
-> Finally, we want to build iOS apps for which we need swift. The language is very comprehensive and we want to focus on what we need for the apps first. So we'll start with a brief overview of a few small apps, and collect the features of the language. We will then look at them one by one.
-
-
-## Topics 
-
-We must at least discuss these subjects:
+We discuss these subjects:
 - comments
 - var, let
 - primitive types

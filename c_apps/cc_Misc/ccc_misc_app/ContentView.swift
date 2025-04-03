@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  e_map_app
-//
-//  Created by Alexander Voss on 02.04.25.
-//
+// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 
@@ -13,12 +8,8 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Placeholder")
         }
         .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }

@@ -1,4 +1,4 @@
-// (C) 2024 A.Voß, a.voss@fh-aachen.de, ios@codebasedlearning.dev
+/// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 
@@ -33,8 +33,4 @@ struct ContentView: View {
     private func saveSelectedTab(_ newState: Int) {
         UserDefaults.standard.set(newState, forKey: ContentView.selectedTabKey)
     }
-}
-
-#Preview {
-    ContentView()
 }

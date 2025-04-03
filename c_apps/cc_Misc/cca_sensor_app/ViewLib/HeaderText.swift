@@ -1,9 +1,4 @@
-//
-//  CommonViews.swift
-//  A_Sensors
-//
-//  Created by Alexander Voss on 22.05.24.
-//
+// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 

@@ -1,14 +1,9 @@
-//
-//  e_map_appApp.swift
-//  e_map_app
-//
-//  Created by Alexander Voss on 02.04.25.
-//
+// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 
 @main
-struct e_map_appApp: App {
+struct GraphicsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

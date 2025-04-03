@@ -1,4 +1,4 @@
-// (C) 2024 A.Voß, a.voss@fh-aachen.de, ios@codebasedlearning.dev
+// (C) 2025 A.Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import Foundation
 import CoreMotion

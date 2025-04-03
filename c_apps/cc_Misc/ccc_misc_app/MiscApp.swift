@@ -3,7 +3,7 @@
 import SwiftUI
 
 @main
-struct SensorsApp: App {
+struct MiscApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
