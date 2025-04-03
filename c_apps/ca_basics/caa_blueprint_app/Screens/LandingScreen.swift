@@ -7,9 +7,9 @@ struct LandingScreen: View {
     
     var body: some View {
         ZStack {
-            Image("memory_backgrd")
+            Image("lego_background")
                 .resizable()
-                .scaledToFill()
+                //.scaledToFill()
                 .opacity(0.2)
                 .ignoresSafeArea()
             VStack(spacing:0) {
