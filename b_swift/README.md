@@ -31,7 +31,12 @@ We discuss these subjects:
 
 ### Part 1
 
-> Create a macOS Command Line Tool (e.g. in 'New Project `MySolutions_PartI`') and single solution functions for each task or use an Online Swift Playground, e.g. https://swiftfiddle.com .
+- script
+- core types
+- functions, closures
+- control flow
+
+> Create a macOS Command Line Tool (e.g. in 'New Project `MySolutions`') and single solution functions for each task (or use an Online Swift Playground), e.g. https://swiftfiddle.com .
 
 ---
 
@@ -107,7 +112,20 @@ Hint: Consider `reduce`, and `m(p(2.0))=289.0`.
 
 ### Part 2
 
-> Extend your project from Part I.
+> Extend your project from Part 1.
+
+---
+
+### 👉 The Rusted Island
+
+Implement two types for managing todo items: one using a struct (TodoItemS) and one using a class (TodoItemC). Both types should support creating a todo item with a title, marking it as completed, and printing a list of items with their status.
+
+Create 3 items for each type: 
+- Store them in separate arrays.
+- Mark the first or last item in each list as completed.
+- Print all items using a loop.
+
+Observe the difference in behavior when modifying struct vs class.
 
 ---
 
@@ -118,8 +136,8 @@ The system should accommodate various payment methods including credit cards, Pa
 
 - Solve this task in a function `theBrokenVillage`.
 - Define a `PaymentProtocol` that includes the following:
-    - A member function `authorize` without parameters. It authorizes a payment and returns a boolean indicating success.
-    - A member function `completePayment` without parameters. It completes the payment if authorization is successful and returns a boolean indicating success.
+    - A function `authorize` without parameters. It authorizes a payment and returns a boolean indicating success.
+    - A function `completePayment` without parameters. It completes the payment if authorization is successful and returns a boolean indicating success.
     - A read-only property `amount` of type `Double` to hold the amount to be paid.
 - Create a base class `Payment` that implements `PaymentProtocol` and default behaviors for the methods declared in the protocol (print a message with the `amount`).
 - Implement a subclass `CreditCardPayment` for handling credit card transactions. Add properties relevant to credit card payments, such as `creditCardNumber` and override one method.
@@ -145,10 +163,12 @@ Include edge cases such as very small numbers, relatively large numbers, and inv
 
 ### 👉 Task 'The Agony Lands'
 
-Develop a generic Queue class that can handle any data type. The queue should support basic operations such as enqueue, dequeue, and peek.
+Develop a generic Queue class that can handle any data type. If you like, you can start with a non-generic one for a particular type, such as Int or String.
+
+The queue should support basic operations such as enqueue, dequeue, and peek.
 
 - Solve this task in a function `theAgonyLands`.
-- Implement a generic class `Queue` where the type of elements it holds is unspecified until an instance is created. The queue should be able to store elements of any given type. Implement these Queue Operations:
+- Implement a (generic) class `Queue`. The queue should be able to store elements of any given type (or your particular type). Implement these Queue Operations:
     - `enqueue`: Add an element to the back of the queue.
     - `dequeue`: Remove the element at the front of the queue and return it. If the queue is empty, return `nil`.
     - `peek`: Return the element at the front of the queue without removing it. If the queue is empty, return `nil`.

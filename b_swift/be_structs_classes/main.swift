@@ -208,9 +208,72 @@ func usingProperties() {
 //----------------------
 
 
+enum Player {
+    case x
+    case o
+
+    var symbol: String {
+        switch self {
+        case .x: return "X"
+        case .o: return "O"
+        }
+    }
+}
+
+enum StringPlayer: String {
+    case x = "❌"
+    case o = "⭕"
+    case none = ""
+}
+
+
+// an enum with associated values and computed properties, just to flex a bit:
+enum NetworkResponse: CustomStringConvertible {
+    case success
+    case failure(error: String)
+    case empty
+    
+    var isSuccess: Bool {
+        if case .success = self {
+            return true
+        }
+        return false
+    }
+    
+    var description: String {
+        switch self {
+        case .success:
+            return "✅ Success"
+        case .failure(let error):
+            return "❌ Error: \(error)"
+        case .empty:
+            return "📭 No data"
+        }
+    }
+}
+
+func usingEnums() {
+    introduce(topic: "Enums")
+    
+    let player: Player = .o                                     // or Player.o
+    print(" 1| player.symbol=\(player.symbol)")                 // no rawValue
+    
+    let stringPlayer: StringPlayer = .x
+    print(" 2| stringPlayer.rawValue=\(stringPlayer.rawValue)") // here we have a string
+    
+    let responseOk: NetworkResponse = .success
+    let responseFail: NetworkResponse = .failure(error: "Network timeout")
+    print(" 3| responses: ok=\(responseOk), \(responseFail)")   // without obj.description
+}
+
+
+//----------------------
+
+
 workingWithInstances()
 initInstances()
 usingProperties()
+usingEnums()
 
 
 //----------------------

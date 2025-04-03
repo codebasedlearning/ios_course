@@ -3,8 +3,7 @@
 import Foundation
 
 
-/// print function intro
-func introduce(topic: String) { print("\n\n\(topic)\n\(String(repeating: "=", count: topic.count))\n") }
+//----------------------
 
 
 func theWhisperingIsland(simulateInput: Bool = true) {
@@ -31,6 +30,9 @@ func theWhisperingIsland(simulateInput: Bool = true) {
         }
     }
 }
+
+
+//----------------------
 
 
 enum ParameterError: Error {
@@ -66,7 +68,6 @@ func fibonacciRecursion(n: Int) throws -> Int {
     return f(n)
 }
 
-
 func theMountainOfSilver(n: Int = 35) {
     introduce(topic: "The Mountain of Silver")
 
@@ -85,6 +86,9 @@ func theMountainOfSilver(n: Int = 35) {
 }
 
 
+//----------------------
+
+
 func theDoomFields(n: Int = 19) {
     introduce(topic: "The Doom Fields")
 
@@ -98,6 +102,9 @@ func theDoomFields(n: Int = 19) {
 
     print(" 1| n=\(n), sequence=\(sequence)")
 }
+
+
+//----------------------
 
 
 func findDigit(line: String, fromStart: Bool) -> Character? {
@@ -134,6 +141,9 @@ func theMistLabyrinth() {
 }
 
 
+//----------------------
+
+
 func theHarborOfChaos() {
     introduce(topic: "The Harbor of Chaos")
  
@@ -152,8 +162,19 @@ func theHarborOfChaos() {
     print(" 1| m(p(\(x)))=\(result)")
 }
 
+
+//----------------------
+
+
 theWhisperingIsland()
 theMountainOfSilver()
 theDoomFields()
 theMistLabyrinth()
 theHarborOfChaos()
+
+
+//----------------------
+
+
+/// print function intro
+func introduce(topic: String) { print("\n\n\(topic)\n\(String(repeating: "=", count: topic.count))\n") }

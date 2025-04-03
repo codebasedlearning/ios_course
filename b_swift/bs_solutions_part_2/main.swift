@@ -3,8 +3,67 @@
 import Foundation
 
 
-/// print function intro
-func introduce(topic: String) { print("\n\n\(topic)\n\(String(repeating: "=", count: topic.count))\n") }
+//----------------------
+
+
+struct TodoItemS {
+    let title: String
+    var isCompleted: Bool
+
+    mutating func markCompleted() {
+        isCompleted = true
+    }
+}
+
+class TodoItemC {
+    let title: String
+    var isCompleted: Bool
+
+    init(title: String, isCompleted: Bool = false) {
+        self.title = title
+        self.isCompleted = isCompleted
+    }
+
+    func markCompleted() {
+        isCompleted = true
+    }
+}
+
+func theRustedIsland() {
+    introduce(topic: "The Rusted Island")
+    
+    var todosS: [TodoItemS] = [
+        TodoItemS(title: "Write Swift code", isCompleted: false),
+        TodoItemS(title: "Debug the thing", isCompleted: false),
+        TodoItemS(title: "Celebrate with coffee", isCompleted: false)
+    ]
+
+    todosS[0].markCompleted()
+
+    print(" 1| todos (struct)")
+    for todo in todosS {
+        let status = todo.isCompleted ? "done" : "open"
+        print(" a| - \(status): '\(todo.title)'")
+    }
+    print()
+
+    let todosC = [
+        TodoItemC(title: "Write Swift code"),
+        TodoItemC(title: "Debug the thing"),
+        TodoItemC(title: "Celebrate with coffee"),
+    ]
+
+    todosC.last!.markCompleted()
+
+    print(" 2| todos (class)")
+    for todo in todosC {
+        let status = todo.isCompleted ? "done" : "open"
+        print(" b| - \(status): '\(todo.title)'")
+    }
+}
+
+
+//----------------------
 
 
 protocol PaymentProtocol {
@@ -82,8 +141,10 @@ func theBrokenVillage() {
             print(" 3| Authorization failed")
         }
     }
-
 }
+
+
+//----------------------
 
 
 extension Int {
@@ -120,6 +181,9 @@ func theHarborOfExiles() {
 }
 
 
+//----------------------
+
+
 class Queue<Element> {
     private var elements: [Element] = []
 
@@ -141,6 +205,7 @@ class Queue<Element> {
     }
 }
 
+// just a test
 struct Person {
     var name: String
     var age: Int
@@ -171,6 +236,18 @@ func theTheAgonyLands() {
     print(" 3| test personQueue passed!")
 }
 
+
+//----------------------
+
+
+theRustedIsland()
 theBrokenVillage()
 theHarborOfExiles()
 theTheAgonyLands()
+
+
+//----------------------
+
+
+/// print function intro
+func introduce(topic: String) { print("\n\n\(topic)\n\(String(repeating: "=", count: topic.count))\n") }
