@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 
 /**
@@ -230,10 +230,12 @@ enum StringPlayer: String {
 // an enum with associated values and computed properties, just to flex a bit:
 enum NetworkResponse: CustomStringConvertible {
     case success
+    // Associated values ('error') let you attach data to specific cases.
     case failure(error: String)
     case empty
     
     var isSuccess: Bool {
+        // this is pattern matching: if case <pattern> = <value>
         if case .success = self {
             return true
         }

@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 
 /**
@@ -82,7 +82,7 @@ func workingWithClosures() {
     let reversedNames2 = names.sorted(by: { (s1: String, s2: String) -> Bool in return s1 > s2 })
     print(" 3| sort with closure:        \(reversedNames2)")
     
-    let reversedNames3 = names.sorted(by: { s1, s2 in s1 > s2 })// infering types from context
+    let reversedNames3 = names.sorted(by: { s1, s2 in s1 > s2 })// infering types from context (oder (s1,s2)
     print(" 4| sort with short closure:  \(reversedNames3)")
 
     let reversedNames4 = names.sorted { s1, s2 in s1 > s2 }     // trailing/outside ()

@@ -33,7 +33,7 @@ struct ScoreView: View {
     @Environment(GameViewModel.self) private var game
 
     var body: some View {
-        Text("Player: \(game.currentPlayer) | Score: \(game.score) | Highscore: \(highscore.score)")
+        Text("Player: \(game.currentPlayer.rawValue) | Score: \(game.score) | Highscore: \(highscore.score)")
             .font(.title3)
             .foregroundColor(.orange)
             .frame(maxWidth: .infinity)

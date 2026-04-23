@@ -14,7 +14,7 @@ class SimpleStack<Element> {
     func pop() -> Element { return items.removeLast() }
 }
 
-/// a 'generic' stack 'interface'; different syntax
+/// a 'generic' stack 'interface'; different syntax (Protocols can't have generic parameters directly)
 protocol Stack {
     associatedtype Item
     func push(_ item: Item)
@@ -141,7 +141,7 @@ struct BoolParser: Parser {
 // func readDBFieldAndParse(with parser: Parser) { }   // associated type is missing
 
 func readDBFieldAndParse(with parser: any Parser) {
-    // field is of 'type' 'Any', but it is a wrapper, not a runtime type
+    // field is of 'type' 'Any' (type erased, opposite of "some", in a way)
     let field = parser.parse("123")
     print(" 1| parser: \(field), \(type(of: field))")
 }
@@ -153,6 +153,14 @@ func usingSomePartII() {
     // ...
 }
 
+/*
+ some Protocol:  Specific → Hidden  → Fast     (compile-time)
+                 ↑         ↑         ↑
+                 |         |         |
+                 |         |         |
+                 ↓         ↓         ↓
+ any Protocol:   Variable → Wrapped → Flexible (runtime)
+ */
 
 //----------------------
 

@@ -6,6 +6,16 @@ protocol Noiseable {
     func makeNoise()
 }
 
+/*
+ Swift protocols are similar to Java interfaces, but with some key differences.
+ - Protocols Can Have Default Implementations (Protocol Extensions).
+ - Protocols Can Be Applied to Structs, Enums, and Classes.
+ - Protocols Can Require Properties.
+ - Swift protocols can have generic-like "associated types".
+ - Protocol Inheritance (Multiple Protocols).
+ 
+ */
+
 /// loud vehicle, implementing Noiseable
 class Vehicle: Noiseable {
     var currentSpeed = 0.0
