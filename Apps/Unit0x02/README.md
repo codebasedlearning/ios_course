@@ -1,4 +1,4 @@
-[© 2025, Alexander Voß, FH Aachen, codebasedlearning.dev](mailto:info@codebasedlearning.dev)
+[© Alexander Voß, FH Aachen, codebasedlearning.dev](mailto:info@codebasedlearning.dev)
 
 # iOS Course – Apps
 
@@ -155,6 +155,15 @@ Domain Model        Business logic          Core app logic
 DTO                 Transport-only          Networking / data layers
 UI Model            Data formatted for UI   ViewModel / View layer
 Persistence Model   Storage representation  Persistence (Core Data)
+
+
+## Other Architecture
+
+The Composable Architecture (TCA) is a Swift architecture library by Pointfree. 
+It is not a SwiftUI feature — it's an opinionated framework you import on top of SwiftUI. 
+The mental model is borrowed from Elm and Redux, retrofitted into Swift's value-type, 
+structured-concurrency world.
+In a way to Model-View-Intent (MVI) on Android TCA is the iOS dialect of the same idea. 
 
 
 ## Tasks
