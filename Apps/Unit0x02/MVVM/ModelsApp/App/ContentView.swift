@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import CblUI
@@ -12,11 +12,9 @@ struct ContentView: View {
             SensorScreen().tabItem {
                 Label("Sensors", systemImage: "1.circle")
             }.tag(0)
-            // PostScreen().tabItem {
-            //     Label("Posts", systemImage: "2.circle")
-            // }.tag(1)
+            // more Screens...
         }
-        .accentColor(colorScheme == .dark ? CblTheme.light : CblTheme.red)
-        .onAppear { selectedTab = 0 }
+        // accentColor has been deprecated since iOS 16; tint is the modern replacement
+        .tint(colorScheme == .dark ? CblTheme.light : CblTheme.red)
     }
 }

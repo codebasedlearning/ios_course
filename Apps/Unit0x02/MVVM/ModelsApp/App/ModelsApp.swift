@@ -1,9 +1,12 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 
 @main
-struct ModelsAppApp: App {
+struct ModelsApp: App {
+    // @State creates observable storage for view models that persists across view
+    // updates. These instances are shared app-wide via SwiftUI's environment system.
+    
     @State private var userViewModel = UserViewModel()
     @State private var heartbeatViewModel = HeartbeatViewModel()
     @State private var temperatureViewModel = TemperatureViewModel()

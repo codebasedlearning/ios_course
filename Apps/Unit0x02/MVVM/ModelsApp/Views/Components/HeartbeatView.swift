@@ -1,0 +1,21 @@
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+
+import SwiftUI
+
+struct HeartbeatView: View {
+    @Environment(HeartbeatViewModel.self) private var heartbeatModel
+
+    @State private var isOn = false
+
+    var body: some View {
+        HStack(alignment: .lastTextBaseline, spacing: 5) {
+            Text("Heartbeat: \(toValidUnitStr(heartbeatModel.currentBPM,"bpm"))")
+                .font(.title2)
+            Toggle("", isOn: $isOn)
+                .onChange(of: isOn) {
+                    if isOn { heartbeatModel.startMonitoring() }
+                    else { heartbeatModel.stopMonitoring() }
+                }
+        }.padding(5)
+    }
+}

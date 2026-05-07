@@ -80,14 +80,7 @@
 		952B02842DD7414F00F1CC2E /* AuthorsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952B02822DD740F400F1CC2E /* AuthorsScreen.swift */; };
 		952B02852DD741B000F1CC2E /* libCblUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509EEF62DA110DA0032A1C6 /* libCblUI.a */; };
 		952C99B72DB9725000186C03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 952C99B32DB9725000186C03 /* Assets.xcassets */; };
-		952C99B82DB9725000186C03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C99B42DB9725000186C03 /* ContentView.swift */; };
-		952C99B92DB9725000186C03 /* ModelsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C99B52DB9725000186C03 /* ModelsApp.swift */; };
-		952C99BC2DB9732B00186C03 /* SensorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C99BB2DB9732B00186C03 /* SensorScreen.swift */; };
 		952C99BD2DB973BE00186C03 /* libCblUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509EEF62DA110DA0032A1C6 /* libCblUI.a */; };
-		952C99C22DB974AA00186C03 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C99C12DB974AA00186C03 /* UserViewModel.swift */; };
-		952C99C42DB977E300186C03 /* SensorModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C99C32DB977E300186C03 /* SensorModels.swift */; };
-		952C99C62DB9781F00186C03 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C99C52DB9781F00186C03 /* ServiceLocator.swift */; };
-		952C99C82DB9786E00186C03 /* SensorViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C99C72DB9786E00186C03 /* SensorViewModels.swift */; };
 		9533E0402DF05737006C393D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9533E03C2DF05737006C393D /* Assets.xcassets */; };
 		9533E0412DF05737006C393D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533E03D2DF05737006C393D /* ContentView.swift */; };
 		9533E0422DF05737006C393D /* PhysicsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533E03E2DF05737006C393D /* PhysicsApp.swift */; };
@@ -96,6 +89,28 @@
 		9533E04C2DF059D8006C393D /* ChartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533E0492DF059D8006C393D /* ChartScreen.swift */; };
 		9533E04F2DF05B65006C393D /* AnimationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533E04E2DF05B65006C393D /* AnimationScreen.swift */; };
 		9533E0522DF05C37006C393D /* SpritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533E0502DF05C37006C393D /* SpritesScreen.swift */; };
+		954E9AE62FACA001002E50E0 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AD92FACA001002E50E0 /* UserViewModel.swift */; };
+		954E9AE72FACA001002E50E0 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ACA2FACA001002E50E0 /* IntExtensions.swift */; };
+		954E9AE82FACA001002E50E0 /* HeartbeatViewModelCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AD62FACA001002E50E0 /* HeartbeatViewModelCI.swift */; };
+		954E9AE92FACA001002E50E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AC62FACA001002E50E0 /* ContentView.swift */; };
+		954E9AEA2FACA001002E50E0 /* SensorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ACC2FACA001002E50E0 /* SensorProtocol.swift */; };
+		954E9AEB2FACA001002E50E0 /* ModelsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AC72FACA001002E50E0 /* ModelsApp.swift */; };
+		954E9AEC2FACA001002E50E0 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AD12FACA001002E50E0 /* ServiceLocator.swift */; };
+		954E9AED2FACA001002E50E0 /* HeartbeatViewCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ADC2FACA001002E50E0 /* HeartbeatViewCI.swift */; };
+		954E9AEE2FACA001002E50E0 /* SimulatedSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ACD2FACA001002E50E0 /* SimulatedSensor.swift */; };
+		954E9AEF2FACA001002E50E0 /* HeartbeatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AD52FACA001002E50E0 /* HeartbeatViewModel.swift */; };
+		954E9AF02FACA001002E50E0 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ADF2FACA001002E50E0 /* UserView.swift */; };
+		954E9AF12FACA001002E50E0 /* SensorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AE32FACA001002E50E0 /* SensorScreen.swift */; };
+		954E9AF22FACA001002E50E0 /* HeartbeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ADB2FACA001002E50E0 /* HeartbeatView.swift */; };
+		954E9AF32FACA001002E50E0 /* TemperatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AD82FACA001002E50E0 /* TemperatureViewModel.swift */; };
+		954E9AF42FACA001002E50E0 /* HeartbeatSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AC92FACA001002E50E0 /* HeartbeatSensor.swift */; };
+		954E9AF52FACA001002E50E0 /* PowerSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ACB2FACA001002E50E0 /* PowerSensor.swift */; };
+		954E9AF62FACA001002E50E0 /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ADE2FACA001002E50E0 /* TemperatureView.swift */; };
+		954E9AF72FACA001002E50E0 /* TemperatureSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ACE2FACA001002E50E0 /* TemperatureSensor.swift */; };
+		954E9AF82FACA001002E50E0 /* MockHeartbeatSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AD32FACA001002E50E0 /* MockHeartbeatSensor.swift */; };
+		954E9AF92FACA001002E50E0 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AE12FACA001002E50E0 /* Formatters.swift */; };
+		954E9AFA2FACA001002E50E0 /* PowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9AD72FACA001002E50E0 /* PowerViewModel.swift */; };
+		954E9AFB2FACA001002E50E0 /* PowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954E9ADD2FACA001002E50E0 /* PowerView.swift */; };
 		9559FF2F2DF1FE1600CA4EF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9559FF2E2DF1FE1600CA4EF3 /* README.md */; };
 		957968102DA2818400C4997B /* libCblUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509EEF62DA110DA0032A1C6 /* libCblUI.a */; };
 		957968172DA3D59300C4997B /* ContentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957968162DA3D59300C4997B /* ContentScreen.swift */; };
@@ -472,13 +487,6 @@
 		952B02822DD740F400F1CC2E /* AuthorsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsScreen.swift; sourceTree = "<group>"; };
 		952C99A82DB9724100186C03 /* x02_models_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = x02_models_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		952C99B32DB9725000186C03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		952C99B42DB9725000186C03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		952C99B52DB9725000186C03 /* ModelsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsApp.swift; sourceTree = "<group>"; };
-		952C99BB2DB9732B00186C03 /* SensorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorScreen.swift; sourceTree = "<group>"; };
-		952C99C12DB974AA00186C03 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
-		952C99C32DB977E300186C03 /* SensorModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorModels.swift; sourceTree = "<group>"; };
-		952C99C52DB9781F00186C03 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
-		952C99C72DB9786E00186C03 /* SensorViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewModels.swift; sourceTree = "<group>"; };
 		952C99CA2DB9FCB400186C03 /* PostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreen.swift; sourceTree = "<group>"; };
 		952C99CB2DB9FCB400186C03 /* PostsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModels.swift; sourceTree = "<group>"; };
 		9533E0312DF05719006C393D /* x06_physics_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = x06_physics_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -489,6 +497,28 @@
 		9533E04A2DF059D8006C393D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		9533E04E2DF05B65006C393D /* AnimationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationScreen.swift; sourceTree = "<group>"; };
 		9533E0502DF05C37006C393D /* SpritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpritesScreen.swift; sourceTree = "<group>"; };
+		954E9AC62FACA001002E50E0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		954E9AC72FACA001002E50E0 /* ModelsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsApp.swift; sourceTree = "<group>"; };
+		954E9AC92FACA001002E50E0 /* HeartbeatSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatSensor.swift; sourceTree = "<group>"; };
+		954E9ACA2FACA001002E50E0 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
+		954E9ACB2FACA001002E50E0 /* PowerSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSensor.swift; sourceTree = "<group>"; };
+		954E9ACC2FACA001002E50E0 /* SensorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorProtocol.swift; sourceTree = "<group>"; };
+		954E9ACD2FACA001002E50E0 /* SimulatedSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatedSensor.swift; sourceTree = "<group>"; };
+		954E9ACE2FACA001002E50E0 /* TemperatureSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureSensor.swift; sourceTree = "<group>"; };
+		954E9AD12FACA001002E50E0 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		954E9AD32FACA001002E50E0 /* MockHeartbeatSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHeartbeatSensor.swift; sourceTree = "<group>"; };
+		954E9AD52FACA001002E50E0 /* HeartbeatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatViewModel.swift; sourceTree = "<group>"; };
+		954E9AD62FACA001002E50E0 /* HeartbeatViewModelCI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatViewModelCI.swift; sourceTree = "<group>"; };
+		954E9AD72FACA001002E50E0 /* PowerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerViewModel.swift; sourceTree = "<group>"; };
+		954E9AD82FACA001002E50E0 /* TemperatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewModel.swift; sourceTree = "<group>"; };
+		954E9AD92FACA001002E50E0 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		954E9ADB2FACA001002E50E0 /* HeartbeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatView.swift; sourceTree = "<group>"; };
+		954E9ADC2FACA001002E50E0 /* HeartbeatViewCI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatViewCI.swift; sourceTree = "<group>"; };
+		954E9ADD2FACA001002E50E0 /* PowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerView.swift; sourceTree = "<group>"; };
+		954E9ADE2FACA001002E50E0 /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
+		954E9ADF2FACA001002E50E0 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		954E9AE12FACA001002E50E0 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		954E9AE32FACA001002E50E0 /* SensorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorScreen.swift; sourceTree = "<group>"; };
 		9559FF2E2DF1FE1600CA4EF3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		957968162DA3D59300C4997B /* ContentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScreen.swift; sourceTree = "<group>"; };
 		9589BD2D2DA4396A006BCEB1 /* CalculatorScreenHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorScreenHint.swift; sourceTree = "<group>"; };
@@ -1273,39 +1303,15 @@
 		952C99B62DB9725000186C03 /* ModelsApp */ = {
 			isa = PBXGroup;
 			children = (
-				952C99C92DB97AF000186C03 /* Service */,
-				952C99C02DB974A400186C03 /* Models */,
-				952C99BA2DB9731D00186C03 /* Screens */,
+				954E9AC82FACA001002E50E0 /* App */,
+				954E9AD02FACA001002E50E0 /* Models */,
+				954E9AD22FACA001002E50E0 /* Services */,
+				954E9AD42FACA001002E50E0 /* TestSupport */,
+				954E9ADA2FACA001002E50E0 /* ViewModels */,
+				954E9AE52FACA001002E50E0 /* Views */,
 				952C99B32DB9725000186C03 /* Assets.xcassets */,
-				952C99B42DB9725000186C03 /* ContentView.swift */,
-				952C99B52DB9725000186C03 /* ModelsApp.swift */,
 			);
 			path = ModelsApp;
-			sourceTree = "<group>";
-		};
-		952C99BA2DB9731D00186C03 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				952C99BB2DB9732B00186C03 /* SensorScreen.swift */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		952C99C02DB974A400186C03 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				952C99D02DB9FEBD00186C03 /* User */,
-				952C99D12DB9FEC600186C03 /* Sensor */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		952C99C92DB97AF000186C03 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				952C99C52DB9781F00186C03 /* ServiceLocator.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		952C99CF2DB9FDB200186C03 /* Unit0x03 */ = {
@@ -1316,23 +1322,6 @@
 				95F9E7882DA676880061B4E4 /* Sensors */,
 			);
 			path = Unit0x03;
-			sourceTree = "<group>";
-		};
-		952C99D02DB9FEBD00186C03 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				952C99C12DB974AA00186C03 /* UserViewModel.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		952C99D12DB9FEC600186C03 /* Sensor */ = {
-			isa = PBXGroup;
-			children = (
-				952C99C72DB9786E00186C03 /* SensorViewModels.swift */,
-				952C99C32DB977E300186C03 /* SensorModels.swift */,
-			);
-			path = Sensor;
 			sourceTree = "<group>";
 		};
 		9533E02C2DF056EC006C393D /* Unit0x06 */ = {
@@ -1380,6 +1369,102 @@
 				9533E0502DF05C37006C393D /* SpritesScreen.swift */,
 			);
 			path = Sprites;
+			sourceTree = "<group>";
+		};
+		954E9AC82FACA001002E50E0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AC62FACA001002E50E0 /* ContentView.swift */,
+				954E9AC72FACA001002E50E0 /* ModelsApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		954E9ACF2FACA001002E50E0 /* Sensor */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AC92FACA001002E50E0 /* HeartbeatSensor.swift */,
+				954E9ACA2FACA001002E50E0 /* IntExtensions.swift */,
+				954E9ACB2FACA001002E50E0 /* PowerSensor.swift */,
+				954E9ACC2FACA001002E50E0 /* SensorProtocol.swift */,
+				954E9ACD2FACA001002E50E0 /* SimulatedSensor.swift */,
+				954E9ACE2FACA001002E50E0 /* TemperatureSensor.swift */,
+			);
+			path = Sensor;
+			sourceTree = "<group>";
+		};
+		954E9AD02FACA001002E50E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				954E9ACF2FACA001002E50E0 /* Sensor */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		954E9AD22FACA001002E50E0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AD12FACA001002E50E0 /* ServiceLocator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		954E9AD42FACA001002E50E0 /* TestSupport */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AD32FACA001002E50E0 /* MockHeartbeatSensor.swift */,
+			);
+			path = TestSupport;
+			sourceTree = "<group>";
+		};
+		954E9ADA2FACA001002E50E0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AD52FACA001002E50E0 /* HeartbeatViewModel.swift */,
+				954E9AD62FACA001002E50E0 /* HeartbeatViewModelCI.swift */,
+				954E9AD72FACA001002E50E0 /* PowerViewModel.swift */,
+				954E9AD82FACA001002E50E0 /* TemperatureViewModel.swift */,
+				954E9AD92FACA001002E50E0 /* UserViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		954E9AE02FACA001002E50E0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				954E9ADB2FACA001002E50E0 /* HeartbeatView.swift */,
+				954E9ADC2FACA001002E50E0 /* HeartbeatViewCI.swift */,
+				954E9ADD2FACA001002E50E0 /* PowerView.swift */,
+				954E9ADE2FACA001002E50E0 /* TemperatureView.swift */,
+				954E9ADF2FACA001002E50E0 /* UserView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		954E9AE22FACA001002E50E0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AE12FACA001002E50E0 /* Formatters.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		954E9AE42FACA001002E50E0 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AE32FACA001002E50E0 /* SensorScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		954E9AE52FACA001002E50E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				954E9AE02FACA001002E50E0 /* Components */,
+				954E9AE22FACA001002E50E0 /* Helpers */,
+				954E9AE42FACA001002E50E0 /* Screens */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9579680C2DA2814D00C4997B /* Frameworks */ = {
@@ -2717,13 +2802,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				952C99C62DB9781F00186C03 /* ServiceLocator.swift in Sources */,
-				952C99B82DB9725000186C03 /* ContentView.swift in Sources */,
-				952C99BC2DB9732B00186C03 /* SensorScreen.swift in Sources */,
-				952C99C22DB974AA00186C03 /* UserViewModel.swift in Sources */,
-				952C99B92DB9725000186C03 /* ModelsApp.swift in Sources */,
-				952C99C42DB977E300186C03 /* SensorModels.swift in Sources */,
-				952C99C82DB9786E00186C03 /* SensorViewModels.swift in Sources */,
+				954E9AE62FACA001002E50E0 /* UserViewModel.swift in Sources */,
+				954E9AE72FACA001002E50E0 /* IntExtensions.swift in Sources */,
+				954E9AE82FACA001002E50E0 /* HeartbeatViewModelCI.swift in Sources */,
+				954E9AE92FACA001002E50E0 /* ContentView.swift in Sources */,
+				954E9AEA2FACA001002E50E0 /* SensorProtocol.swift in Sources */,
+				954E9AEB2FACA001002E50E0 /* ModelsApp.swift in Sources */,
+				954E9AEC2FACA001002E50E0 /* ServiceLocator.swift in Sources */,
+				954E9AED2FACA001002E50E0 /* HeartbeatViewCI.swift in Sources */,
+				954E9AEE2FACA001002E50E0 /* SimulatedSensor.swift in Sources */,
+				954E9AEF2FACA001002E50E0 /* HeartbeatViewModel.swift in Sources */,
+				954E9AF02FACA001002E50E0 /* UserView.swift in Sources */,
+				954E9AF12FACA001002E50E0 /* SensorScreen.swift in Sources */,
+				954E9AF22FACA001002E50E0 /* HeartbeatView.swift in Sources */,
+				954E9AF32FACA001002E50E0 /* TemperatureViewModel.swift in Sources */,
+				954E9AF42FACA001002E50E0 /* HeartbeatSensor.swift in Sources */,
+				954E9AF52FACA001002E50E0 /* PowerSensor.swift in Sources */,
+				954E9AF62FACA001002E50E0 /* TemperatureView.swift in Sources */,
+				954E9AF72FACA001002E50E0 /* TemperatureSensor.swift in Sources */,
+				954E9AF82FACA001002E50E0 /* MockHeartbeatSensor.swift in Sources */,
+				954E9AF92FACA001002E50E0 /* Formatters.swift in Sources */,
+				954E9AFA2FACA001002E50E0 /* PowerViewModel.swift in Sources */,
+				954E9AFB2FACA001002E50E0 /* PowerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
