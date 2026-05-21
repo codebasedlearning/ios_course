@@ -11,6 +11,9 @@ struct ModelsApp: App {
     @State private var heartbeatViewModel = HeartbeatViewModel()
     @State private var temperatureViewModel = TemperatureViewModel()
     @State private var powerViewModel = PowerViewModel()
+    @State private var humidityViewModel = HumidityViewModel()       // AsyncStream
+    @State private var batteryViewModel = BatteryViewModel()         // CurrentValueSubject
+    @State private var secretsViewModel = SecretsViewModel()         // fan-out from AuthService
 
     var body: some Scene {
         WindowGroup {
@@ -19,6 +22,9 @@ struct ModelsApp: App {
                 .environment(heartbeatViewModel)
                 .environment(temperatureViewModel)
                 .environment(powerViewModel)
+                .environment(humidityViewModel)
+                .environment(batteryViewModel)
+                .environment(secretsViewModel)
         }
     }
 }

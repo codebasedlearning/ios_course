@@ -170,6 +170,16 @@
 		95F9E7A32DA678290061B4E4 /* libCblUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509EEF62DA110DA0032A1C6 /* libCblUI.a */; };
 		95F9E7A72DA679830061B4E4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 95F9E7A62DA679830061B4E4 /* README.md */; };
 		95F9E7AA2DA6834E0061B4E4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 95F9E7A92DA6834E0061B4E4 /* README.md */; };
+		9D2026D5000000000000000B /* HumiditySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D5000000000000000A /* HumiditySensor.swift */; };
+		9D2026D5000000000000000D /* HumidityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D5000000000000000C /* HumidityViewModel.swift */; };
+		9D2026D5000000000000000F /* HumidityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D5000000000000000E /* HumidityView.swift */; };
+		9D2026D50000000000000011 /* BatterySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D50000000000000010 /* BatterySensor.swift */; };
+		9D2026D50000000000000013 /* BatteryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D50000000000000012 /* BatteryViewModel.swift */; };
+		9D2026D50000000000000015 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D50000000000000014 /* BatteryView.swift */; };
+		9D2026D60000000000000002 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D60000000000000001 /* User.swift */; };
+		9D2026D60000000000000004 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D60000000000000003 /* AuthService.swift */; };
+		9D2026D70000000000000002 /* SecretsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D70000000000000001 /* SecretsViewModel.swift */; };
+		9D2026D70000000000000004 /* SecretsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D70000000000000003 /* SecretsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -567,6 +577,16 @@
 		95F9E7A62DA679830061B4E4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		95F9E7A82DA681FA0061B4E4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		95F9E7A92DA6834E0061B4E4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9D2026D5000000000000000A /* HumiditySensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumiditySensor.swift; sourceTree = "<group>"; };
+		9D2026D5000000000000000C /* HumidityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityViewModel.swift; sourceTree = "<group>"; };
+		9D2026D5000000000000000E /* HumidityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumidityView.swift; sourceTree = "<group>"; };
+		9D2026D50000000000000010 /* BatterySensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatterySensor.swift; sourceTree = "<group>"; };
+		9D2026D50000000000000012 /* BatteryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryViewModel.swift; sourceTree = "<group>"; };
+		9D2026D50000000000000014 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
+		9D2026D60000000000000001 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9D2026D60000000000000003 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		9D2026D70000000000000001 /* SecretsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsViewModel.swift; sourceTree = "<group>"; };
+		9D2026D70000000000000003 /* SecretsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1380,23 +1400,26 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		954E9ACF2FACA001002E50E0 /* Sensor */ = {
+		954E9ACF2FACA001002E50E0 /* Sensors */ = {
 			isa = PBXGroup;
 			children = (
 				954E9AC92FACA001002E50E0 /* HeartbeatSensor.swift */,
-				954E9ACA2FACA001002E50E0 /* IntExtensions.swift */,
 				954E9ACB2FACA001002E50E0 /* PowerSensor.swift */,
-				954E9ACC2FACA001002E50E0 /* SensorProtocol.swift */,
 				954E9ACD2FACA001002E50E0 /* SimulatedSensor.swift */,
 				954E9ACE2FACA001002E50E0 /* TemperatureSensor.swift */,
+				9D2026D5000000000000000A /* HumiditySensor.swift */,
+				9D2026D50000000000000010 /* BatterySensor.swift */,
 			);
-			path = Sensor;
+			path = Sensors;
 			sourceTree = "<group>";
 		};
 		954E9AD02FACA001002E50E0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				954E9ACF2FACA001002E50E0 /* Sensor */,
+				95B53AD52FBDECAA00D5F2F8 /* Protocols */,
+				95B53AD42FBDEC4300D5F2F8 /* Helpers */,
+				954E9ACF2FACA001002E50E0 /* Sensors */,
+				9D2026D60000000000000005 /* User */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1405,6 +1428,7 @@
 			isa = PBXGroup;
 			children = (
 				954E9AD12FACA001002E50E0 /* ServiceLocator.swift */,
+				9D2026D60000000000000003 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1425,6 +1449,9 @@
 				954E9AD72FACA001002E50E0 /* PowerViewModel.swift */,
 				954E9AD82FACA001002E50E0 /* TemperatureViewModel.swift */,
 				954E9AD92FACA001002E50E0 /* UserViewModel.swift */,
+				9D2026D5000000000000000C /* HumidityViewModel.swift */,
+				9D2026D50000000000000012 /* BatteryViewModel.swift */,
+				9D2026D70000000000000001 /* SecretsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1437,6 +1464,9 @@
 				954E9ADD2FACA001002E50E0 /* PowerView.swift */,
 				954E9ADE2FACA001002E50E0 /* TemperatureView.swift */,
 				954E9ADF2FACA001002E50E0 /* UserView.swift */,
+				9D2026D5000000000000000E /* HumidityView.swift */,
+				9D2026D50000000000000014 /* BatteryView.swift */,
+				9D2026D70000000000000003 /* SecretsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1522,6 +1552,30 @@
 				9592A6442DD0E1AF00F047CF /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		95B53AD42FBDEC4300D5F2F8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				954E9ACA2FACA001002E50E0 /* IntExtensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		95B53AD52FBDECAA00D5F2F8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				954E9ACC2FACA001002E50E0 /* SensorProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9D2026D60000000000000005 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				9D2026D60000000000000001 /* User.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		95C27E822DD4894000D88B17 /* ViewModels */ = {
@@ -2824,6 +2878,16 @@
 				954E9AF92FACA001002E50E0 /* Formatters.swift in Sources */,
 				954E9AFA2FACA001002E50E0 /* PowerViewModel.swift in Sources */,
 				954E9AFB2FACA001002E50E0 /* PowerView.swift in Sources */,
+				9D2026D5000000000000000B /* HumiditySensor.swift in Sources */,
+				9D2026D5000000000000000D /* HumidityViewModel.swift in Sources */,
+				9D2026D5000000000000000F /* HumidityView.swift in Sources */,
+				9D2026D50000000000000011 /* BatterySensor.swift in Sources */,
+				9D2026D50000000000000013 /* BatteryViewModel.swift in Sources */,
+				9D2026D50000000000000015 /* BatteryView.swift in Sources */,
+				9D2026D60000000000000002 /* User.swift in Sources */,
+				9D2026D60000000000000004 /* AuthService.swift in Sources */,
+				9D2026D70000000000000002 /* SecretsViewModel.swift in Sources */,
+				9D2026D70000000000000004 /* SecretsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

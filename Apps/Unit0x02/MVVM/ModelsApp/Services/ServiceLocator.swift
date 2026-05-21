@@ -23,8 +23,18 @@ class ServiceLocator {
     private lazy var heartbeatSensorInstance = HeartbeatSensor()
     private lazy var temperatureSensorInstance = TemperatureSensor()
     private lazy var powerSensorInstance = PowerSensor()
+    private lazy var humiditySensorInstance = HumiditySensor()      // AsyncStream
+    private lazy var batterySensorInstance = BatterySensor()        // CurrentValueSubject
+
+    // Session/auth service — owns the "currently signed-in user".
+    // Initialised with Bob so the demo starts in a "signed in" state,
+    // matching the previous (Model-less) behaviour.
+    private lazy var authServiceInstance = AuthService(initialUser: AuthService.bob)
 
     var heartbeatSensor: HeartbeatSensor { heartbeatSensorInstance }     // remember: a getter
     var temperatureSensor: TemperatureSensor { temperatureSensorInstance }
     var powerSensor: PowerSensor { powerSensorInstance }
+    var humiditySensor: HumiditySensor { humiditySensorInstance }
+    var batterySensor: BatterySensor { batterySensorInstance }
+    var authService: AuthService { authServiceInstance }
 }
