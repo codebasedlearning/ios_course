@@ -56,34 +56,34 @@ class OfflineViewModel {
 }
 
 class OfflineData {
-    private static let post_collection: [Post] = [
-        Post(id:1, userId: 1, title: "post 1", body: "body 1"),
-        Post(id:2, userId: 1, title: "post 2", body: "body 2")
+    private static let postCollection: [Post] = [
+        Post(id: 1, userId: 1, title: "post 1", body: "body 1"),
+        Post(id: 2, userId: 1, title: "post 2", body: "body 2")
     ]
-    private static let post_error: [Post] = [
-        Post(id:0, userId: 1, title: "error", body: "body error"),
+    private static let postError: [Post] = [
+        Post(id: 0, userId: 1, title: "error", body: "body error"),
     ]
-    
-    private static let comment_collection: [Comment] = [
-        Comment(id:11, postId: 1, name: "name 1.1", email: "1.1@example.com", body: "body 1.1"),
-        Comment(id:12, postId: 1, name: "name 1.2", email: "1.2@example.com", body: "body 1.2"),
-        Comment(id:21, postId: 2, name: "name 2.1", email: "2.1@example.com", body: "body 2.1"),
-        Comment(id:22, postId: 2, name: "name 2.2", email: "2.2@example.com", body: "body 2.2"),
-        Comment(id:23, postId: 2, name: "name 2.3", email: "2.3@example.com", body: "body 2.3"),
+
+    private static let commentCollection: [Comment] = [
+        Comment(id: 11, postId: 1, name: "name 1.1", email: "1.1@example.com", body: "body 1.1"),
+        Comment(id: 12, postId: 1, name: "name 1.2", email: "1.2@example.com", body: "body 1.2"),
+        Comment(id: 21, postId: 2, name: "name 2.1", email: "2.1@example.com", body: "body 2.1"),
+        Comment(id: 22, postId: 2, name: "name 2.2", email: "2.2@example.com", body: "body 2.2"),
+        Comment(id: 23, postId: 2, name: "name 2.3", email: "2.3@example.com", body: "body 2.3"),
     ]
-    
-    private static let comment_error: [Comment] = [
-        Comment(id:99, postId: 0, name: "error", email: "error@example.com", body: "body error"),
+
+    private static let commentError: [Comment] = [
+        Comment(id: 99, postId: 0, name: "error", email: "error@example.com", body: "body error"),
     ]
-    
+
     static func getPosts(state: ConnectionState) -> [Post] {
         switch state {
         case .online:
             return []
         case .offline:
-            return OfflineData.post_collection
+            return postCollection
         case .error:
-            return OfflineData.post_error
+            return postError
         }
     }
 
@@ -94,14 +94,14 @@ class OfflineData {
         case .offline:
             switch postId {
             case 1:
-                return Array(OfflineData.comment_collection[0...1])
+                return Array(commentCollection[0...1])
             case 2:
-                return Array(OfflineData.comment_collection[2...4])
+                return Array(commentCollection[2...4])
             default:
                 return []
             }
         case .error:
-            return OfflineData.comment_error
+            return commentError
         }
     }
 }

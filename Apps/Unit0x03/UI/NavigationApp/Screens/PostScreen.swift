@@ -19,10 +19,11 @@ struct PostScreen: View {
                 }.padding(10)
 
                 /*
-                 That is the core component: NavigationView (Master) with NavigationLink (Detail)
+                 That is the core component: NavigationStack (Master) with NavigationLink (Detail).
+                 NavigationView is deprecated since iOS 16 — NavigationStack is the replacement.
                  */
-                
-                NavigationView {
+
+                NavigationStack {
                     List {
                         ForEach(postViewModel.posts, id: \.id) { post in
                             NavigationLink(destination: CommentsView(postId: post.id)) {
@@ -76,7 +77,7 @@ struct CommentsView: View {
                 viewModel.fetchComments(forPostId: postId)
             }
         }
-        .background(Color.mint.opacity(1.0))
+        .background(Color.mint)
         .onChange(of: offlineViewMode.currentState) {
             viewModel.fetchComments(forPostId: postId)
         }

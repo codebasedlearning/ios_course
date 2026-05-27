@@ -14,7 +14,11 @@ class SensorModel {
         if motionManager.isAccelerometerAvailable {
             motionManager.accelerometerUpdateInterval = 0.1
             motionManager.startAccelerometerUpdates(to: OperationQueue.main) { [weak self] data, error in
-                if let data = data {
+                if let error {
+                    print("Accelerometer error: \(error.localizedDescription)")
+                    return
+                }
+                if let data {
                     self?.accelerometerData = data
                 }
             }
@@ -22,18 +26,22 @@ class SensorModel {
         if motionManager.isGyroAvailable {
             motionManager.gyroUpdateInterval = 0.1
             motionManager.startGyroUpdates(to: OperationQueue.main) { [weak self] data, error in
-                if let data = data {
+                if let error {
+                    print("Gyroscope error: \(error.localizedDescription)")
+                    return
+                }
+                if let data {
                     self?.gyroData = data
                 }
             }
         }
     }
-    
+
     func stopReadingSensors() {
-        if motionManager.isAccelerometerAvailable {
+        if motionManager.isAccelerometerActive {
             motionManager.stopAccelerometerUpdates()
         }
-        if motionManager.isGyroAvailable {
+        if motionManager.isGyroActive {
             motionManager.stopGyroUpdates()
         }
     }

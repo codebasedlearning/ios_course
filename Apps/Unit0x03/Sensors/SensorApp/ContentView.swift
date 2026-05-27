@@ -25,7 +25,7 @@ struct ContentView: View {
                 Label("Scanner", systemImage: "5.circle")
             }.tag(4)
         }
-        .accentColor(colorScheme == .dark ? CblTheme.light : CblTheme.red)
+        .tint(colorScheme == .dark ? CblTheme.light : CblTheme.red)
         .onAppear { selectedTab = 0 }
     }
 }
@@ -38,7 +38,7 @@ struct ScreenButtonStyle: ButtonStyle {
             .padding()
             .background(CblTheme.dark)
             .foregroundColor(CblTheme.light)
-            .cornerRadius(10)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(CblTheme.light, lineWidth: 1)

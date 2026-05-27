@@ -3,13 +3,13 @@
 import SwiftUI
 import Foundation
 
-// data model
+// data model — use let: API responses are immutable DTOs, they should not be mutated client-side
 struct Comment: Codable, Identifiable {
-    var id: Int
-    var postId: Int
-    var name: String
-    var email: String
-    var body: String
+    let id: Int
+    let postId: Int
+    let name: String
+    let email: String
+    let body: String
 }
 
 @Observable
@@ -25,13 +25,14 @@ class CommentsViewModel {
         print("fetch 1")
         repository.fetchComments(forPostId: postId) { [weak self] newComments in
             self?.isLoading = false
-            self?.comments = newComments ?? []
+            self?.comments = newComments
         }
     }
 }
 
 class CommentsRepository {
-    func fetchComments(forPostId postId: Int, completion: @escaping ([Comment]?) -> Void) {
+    // use non-optional [Comment] to match PostsRepository's convention
+    func fetchComments(forPostId postId: Int, completion: @escaping ([Comment]) -> Void) {
         let manager = ServiceLocator.shared.offlineModeManager
 
         guard manager.isOnline, let url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)/comments") else {
@@ -47,11 +48,13 @@ class CommentsRepository {
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let data = data {
-                    if let decodedResponse = try? JSONDecoder().decode([Comment].self, from: data) {
+                    do {
+                        let decodedResponse = try JSONDecoder().decode([Comment].self, from: data)
                         completion(decodedResponse)
                         return
+                    } catch {
+                        print("JSON decode error: \(error)")
                     }
-                    print("data available, but could not be decoded")
                 } else if let error = error {
                     print(error.localizedDescription)
                 }

@@ -39,9 +39,23 @@ class HapticManager {
     
     private func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        
+
         do {
             self.engine = try CHHapticEngine()
+
+            // The engine can stop due to interruptions (phone call, Siri, alarm, etc.).
+            // stoppedHandler lets us know it happened; resetHandler lets us restart it.
+            engine?.stoppedHandler = { reason in
+                print("Haptic engine stopped: \(reason)")
+            }
+            engine?.resetHandler = { [weak self] in
+                do {
+                    try self?.engine?.start()
+                } catch {
+                    print("Failed to restart haptic engine: \(error.localizedDescription)")
+                }
+            }
+
             try engine?.start()
         } catch {
             print("There was an error creating the haptic engine: \(error.localizedDescription)")

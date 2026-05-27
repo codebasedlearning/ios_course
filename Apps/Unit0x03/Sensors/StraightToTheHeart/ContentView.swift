@@ -13,7 +13,7 @@ struct ContentView: View {
                 Label("Heart", systemImage: "1.circle")
             }.tag(0)
         }
-        .accentColor(colorScheme == .dark ? CblTheme.light : CblTheme.red)
+        .tint(colorScheme == .dark ? CblTheme.light : CblTheme.red)
         .onAppear { selectedTab = 0 }
     }
 }

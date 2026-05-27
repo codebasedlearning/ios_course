@@ -29,38 +29,43 @@ struct AirDropScreen: View {
         }
     }
     
-    func shareText() {
-        // create controller for sharing
+    private func shareText() {
         let activityViewController = UIActivityViewController(activityItems: [sendText], applicationActivities: nil)
         activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .message, .mail]
-        
-        // present the activity view controller
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootViewController = windowScene.windows.first?.rootViewController {
-            rootViewController.present(activityViewController, animated: true, completion: nil)
+        present(activityViewController)
+    }
+
+    private func shareTextFile() {
+        let fileName = "ios_course_air_drop_test.txt"
+
+        // use the temporary directory — this file only needs to live long enough for the share sheet
+        let filePath = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+        do {
+            try sendText.write(to: filePath, atomically: true, encoding: .utf8)
+            let activityViewController = UIActivityViewController(activityItems: [filePath], applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .message, .mail]
+            present(activityViewController)
+        } catch {
+            print("Error writing file: \(error)")
         }
     }
-    
-    func shareTextFile() {
-        let fileName = "ios_course_air_drop_test.txt"
-        
-        // save the text to a temporary file
-        if let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName) {
-            do {
-                try sendText.write(to: filePath, atomically: true, encoding: .utf8)
-                
-                // as before
-                let activityViewController = UIActivityViewController(activityItems: [filePath], applicationActivities: nil)
-                activityViewController.excludedActivityTypes = [.postToFacebook, .postToTwitter, .message, .mail]
-                
-                // as before
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let rootViewController = windowScene.windows.first?.rootViewController {
-                    rootViewController.present(activityViewController, animated: true, completion: nil)
-                }
-            } catch {
-                print("Error writing file: \(error)")
-            }
+
+    // extracted helper: sets the popover anchor required on iPad, then presents
+    private func present(_ activityViewController: UIActivityViewController) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let rootViewController = windowScene.windows.first?.rootViewController else { return }
+
+        // iPad requires a sourceView/sourceRect for the popover; without it the app crashes
+        if let popover = activityViewController.popoverPresentationController {
+            popover.sourceView = rootViewController.view
+            popover.sourceRect = CGRect(
+                x: rootViewController.view.bounds.midX,
+                y: rootViewController.view.bounds.midY,
+                width: 0, height: 0
+            )
+            popover.permittedArrowDirections = []
         }
+
+        rootViewController.present(activityViewController, animated: true)
     }
 }

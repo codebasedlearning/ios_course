@@ -5,14 +5,14 @@ import CoreBluetooth
 import CblUI
 
 struct BTScreen: View {
-    @ObservedObject var bluetoothManager = BluetoothManager()
-    
+    @StateObject private var bluetoothManager = BluetoothManager()
+
     let columns = [
             GridItem(.flexible(), alignment: .leading),
             GridItem(.flexible(), alignment: .trailing),
             GridItem(.flexible(), alignment: .leading)
         ]
-    
+
     var body: some View {
         CblScreen(title: "ThermoBeacon", image: "weatherhut") {
             HStack {
@@ -29,6 +29,7 @@ struct BTScreen: View {
             HStack {
                 Text("Scan active").padding(5)
                 Toggle(isOn: $bluetoothManager.isScanActive) { }
+                    .disabled(!bluetoothManager.isBTavailable)
                 Spacer()
             }
         }
@@ -64,7 +65,7 @@ struct BTScreen: View {
  */
 
 class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
-    var centralManager: CBCentralManager!
+    private var centralManager: CBCentralManager!
     
     // sometimes we like to see a list of devices, sometimes we need to keep book
     // on found devices...
@@ -94,8 +95,8 @@ class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
             // centralManager.scanForPeripherals(withServices: specificServices, options: nil)
             isScanActive = true
             // kill it after 10s, scanning usually costs energy
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-                self.stopScanning()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { [weak self] in
+                self?.stopScanning()
             }
         } else {
             // the user needs more info on that, maybe BT could be enabled

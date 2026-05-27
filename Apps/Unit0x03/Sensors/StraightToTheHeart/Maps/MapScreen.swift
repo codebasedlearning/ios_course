@@ -11,8 +11,9 @@ struct MapScreen: View {
     @State private var locationManager = LocationManager()
     
     // https://de.wikipedia.org/wiki/Geographische_Koordinaten
-    let coordsITC = CLLocationCoordinate2D(latitude: 50.778899, longitude: 6.059341)
-    let coordsAachen = CLLocationCoordinate2D(latitude: 50.7753, longitude: 6.0839)
+    // static: these are fixed constants, not per-instance state
+    private static let coordsITC = CLLocationCoordinate2D(latitude: 50.778899, longitude: 6.059341)
+    private static let coordsAachen = CLLocationCoordinate2D(latitude: 50.7753, longitude: 6.0839)
     
     // camera pos is not always != 0, so we keep the last pos
     @State private var cameraPos: MapCameraPosition
@@ -29,12 +30,12 @@ struct MapScreen: View {
     init() {
         // start with Aachen region
         let region = MKCoordinateRegion(
-            center: coordsAachen,
+            center: Self.coordsAachen,
             latitudinalMeters: 5000,
             longitudinalMeters: 5000
         )
         cameraPos = MapCameraPosition.region(region)
-        coordsLast = coordsAachen
+        coordsLast = Self.coordsAachen
     }
     
     var body: some View {
@@ -44,7 +45,7 @@ struct MapScreen: View {
                 MapReader{ reader in
                     Map(position: $cameraPos) {
                         // some markers on the map, could be anything
-                        Marker("ITC", coordinate: coordsITC).tint(.blue)
+                        Marker("ITC", coordinate: Self.coordsITC).tint(.blue)
                         // show our settings
                         if let coordsHeart {
                             Marker("Heart", systemImage: "heart", coordinate: coordsHeart).tint(.red)
@@ -146,10 +147,13 @@ struct MapScreen: View {
         
         // unit of asynchronous work
         Task {
-            let directions = MKDirections(request: request)
-            let results = try await directions.calculate() // it needs some time, so wait for it
-            let routes = results.routes
-            route = routes.first // nil if collection is empty
+            do {
+                let directions = MKDirections(request: request)
+                let results = try await directions.calculate() // it needs some time, so wait for it
+                route = results.routes.first // nil if collection is empty
+            } catch {
+                print("Route calculation failed: \(error.localizedDescription)")
+            }
         }
     }
 }
@@ -172,15 +176,14 @@ struct LocationAndRouteView: View {
                     .shadow(radius: 10)
             }
             Button(action: routeAction) {
-                //let isDisabled = coordsStart==nil || coordsHeart==nil
                 Image(systemName: "car")
                     .foregroundColor(.white)
                     .padding()
                     .background(isRouteDisabled ? Color.clear : Color.blue)
                     .clipShape(Circle())
                     .shadow(radius: 10)
-                    .disabled(isRouteDisabled)
             }
+            .disabled(isRouteDisabled) // must be on the Button, not the Image inside it
             
         }.padding(10)
     }

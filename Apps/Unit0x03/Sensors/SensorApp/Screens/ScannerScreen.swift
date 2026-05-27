@@ -5,11 +5,9 @@ import AVFoundation
 import CblUI
 
 /*
- tbd:  - There is some strange cam window size, it has to adapt to the 
+ tbd:  - There is some strange cam window size, it has to adapt to the
          remaining screen space.
        - To get the code type (barcode, qr, ...) would be cool.
-       - Do I need to update layer in updateUIView and do I need to do it 
-         in main thread? Also, there could be a connection to the first issue.
  */
 
 struct ScannerScreen: View {
@@ -62,8 +60,10 @@ struct ScannerScreen: View {
         case .notDetermined:
             // The user has not yet been asked for camera access
             AVCaptureDevice.requestAccess(for: .video) { granted in
-                if !granted {
-                    self.showPermissionAlert = true
+                DispatchQueue.main.async {
+                    if !granted {
+                        self.showPermissionAlert = true
+                    }
                 }
             }
         case .denied, .restricted:
@@ -78,11 +78,12 @@ struct ScannerScreen: View {
 
 class ScannerCoordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     var parent: ScannerView
-    
+    var session: AVCaptureSession?  // held here so dismantleUIView can stop it
+
     init(parent: ScannerView) {
         self.parent = parent
     }
-    
+
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
@@ -90,7 +91,6 @@ class ScannerCoordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate {
             DispatchQueue.main.async {
                 self.parent.didFindCode(stringValue)
             }
-            //parent.didFindCode(stringValue)
         }
     }
 }
@@ -147,26 +147,29 @@ struct ScannerView: UIViewRepresentable {
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer.videoGravity = .resizeAspectFill
-        
+
         DispatchQueue.main.async {
             previewLayer.frame = view.layer.bounds
             view.layer.addSublayer(previewLayer)
         }
-        
-        session.startRunning()
-        
+
+        // startRunning() is blocking — must not run on the main thread
+        context.coordinator.session = session
+        DispatchQueue.global(qos: .userInitiated).async {
+            session.startRunning()
+        }
+
         return view
     }
-    
+
     func updateUIView(_ uiView: UIView, context: Context) {
-//                DispatchQueue.main.async {
-//                            if let sublayers = uiView.layer.sublayers {
-//                                for layer in sublayers {
-//                                    if layer is AVCaptureVideoPreviewLayer {
-//                                        layer.frame = uiView.layer.bounds
-//                                    }
-//                                }
-//                            }
-//                        }
+        // keep the preview layer in sync with the view's bounds (e.g. on rotation)
+        if let previewLayer = uiView.layer.sublayers?.first(where: { $0 is AVCaptureVideoPreviewLayer }) {
+            previewLayer.frame = uiView.layer.bounds
+        }
+    }
+
+    static func dismantleUIView(_ uiView: UIView, coordinator: ScannerCoordinator) {
+        coordinator.session?.stopRunning()
     }
 }

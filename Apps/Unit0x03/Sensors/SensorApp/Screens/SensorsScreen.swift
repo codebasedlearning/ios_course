@@ -15,8 +15,7 @@ struct SensorsScreen: View {
     @Environment(\.scenePhase) private var scenePhase
     
     @State var sensorModel = SensorModel()
-    @State private var rotation: Angle = .zero
-    
+
     var body: some View {
         CblScreen(title: "Sensors", image: "lego_background") {
             GeometryReader { geo in
@@ -48,7 +47,7 @@ struct SensorsScreen: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: geo.size.width * 0.8)
                         .rotationEffect(
-                            rotation + Angle(degrees: -(sensorModel.accelerometerData?.acceleration.x ?? 0)*45.0)
+                            Angle(degrees: -(sensorModel.accelerometerData?.acceleration.x ?? 0)*45.0)
                         )
                         .rotation3DEffect(
                             .degrees(sensorModel.accelerometerData?.acceleration.x ?? 0)*45.0,
@@ -57,7 +56,12 @@ struct SensorsScreen: View {
                     Spacer()
                 }
             }
-            .onChange(of: scenePhase) { oldState, newState in
+            // onAppear: scenePhase is already .active on first launch, so onChange alone
+            // would miss the initial transition — we need both.
+            .onAppear {
+                sensorModel.startReadingSensors()
+            }
+            .onChange(of: scenePhase) { _, newState in
                 if newState == .active {
                     sensorModel.startReadingSensors()
                 } else {

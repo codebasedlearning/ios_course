@@ -3,12 +3,12 @@
 import SwiftUI
 import Foundation
 
-// data model
+// data model — use let: API responses are immutable DTOs, they should not be mutated client-side
 struct Post: Codable, Identifiable {
-    var id: Int
-    var userId: Int
-    var title: String
-    var body: String
+    let id: Int
+    let userId: Int
+    let title: String
+    let body: String
 }
 
 @Observable
@@ -50,11 +50,13 @@ class PostsRepository {
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let data = data {
-                    if let decodedResponse = try? JSONDecoder().decode([Post].self, from: data) {
+                    do {
+                        let decodedResponse = try JSONDecoder().decode([Post].self, from: data)
                         completion(decodedResponse)
                         return
+                    } catch {
+                        print("JSON decode error: \(error)")
                     }
-                    print("data available, but could not be decoded")
                 } else if let error = error {
                     print(error.localizedDescription)
                 }
