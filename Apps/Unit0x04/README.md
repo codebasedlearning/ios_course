@@ -55,23 +55,61 @@ We have taken the following into account:
 - user and security concepts;
 - database connection and operations;
 - messaging
+- broadcasting
 
-### SQL operations
-
-```
-select Q.id, Q.created_at, U.email, Q.message from global_message_queue Q
-left outer join auth.users U on Q.user_id = U.id
-order by created_at desc;
-
--- select * from read_all_messages;
+### Initial SQL operations (Supabase SQL Editor)
 
 ```
 
-## Tasks
+-- table global_message_queue
+
+create table public.global_message_queue (
+    id uuid primary key default gen_random_uuid(),
+    user_id uuid not null references auth.users(id) on delete cascade,
+    created_at timestamptz not null default now(),
+    message jsonb not null
+);
+
+-- enable row level security
+
+alter table public.global_message_queue enable row level security;
+
+-- allow authenticated users all operations
+
+create policy "authenticated_users_full_access"
+    on public.global_message_queue
+    for all
+    to authenticated
+    using (true)
+    with check (true);
+
+-- grant access to the table
+
+grant select, insert, update, delete
+    on public.global_message_queue
+    to authenticated;
+
+-- create the view
+
+create or replace view public.read_all_messages as
+    select q.id, q.created_at, u.email, q.message
+    from public.global_message_queue q
+    left outer join auth.users u on q.user_id = u.id
+    order by q.created_at desc;
+
+-- grant access to the view
+
+grant select on public.read_all_messages to authenticated;
+
+-- regisater for real-time event for chaning table
+
+alter publication supabase_realtime
+    add table public.global_message_queue;
 
 
-### 👉 Task 'iOS-Project'
+-- to get rid of
 
-Think about 
-- Do you have a need for any of these technologies in your application?
+-- drop view public.read_all_messages;
+-- drop table public.global_message_queue;
 
+```

@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import Combine
@@ -35,35 +35,48 @@ enum DatabaseConnectorEvent {
 
 final class DatabaseConnector {
     private let client: SupabaseClient
-    
+
     private let eventSubject = CurrentValueSubject<DatabaseConnectorEvent, Never>(.signedOut)
 
-    // make them readable
-    var current: SupabaseClient { client }
-    
-    var eventPublisher: AnyPublisher<DatabaseConnectorEvent, Never> {eventSubject.eraseToAnyPublisher()}
-    
-    private let broadcastChannel = "mobileApp-channel"
-    private let broadcastEvent = "mobileApp-event"          // "*" does not work...
-    var channel : RealtimeChannelV2
-    
-    var isAuthenticated = false
-    var userProfile: UserProfile? = nil
+    // expose the underlying Supabase SDK client for direct queries
+    var supabaseClient: SupabaseClient { client }
+
+    // same idea as in NetworkMonitor
+    var eventPublisher: AnyPublisher<DatabaseConnectorEvent, Never> { eventSubject.eraseToAnyPublisher() }
+
+    private let broadcastChannelName = "mobileApp-channel"
+    private let broadcastEventName = "mobileApp-event"          // "*" does not work...
+    let broadcastChannel: RealtimeChannelV2                          // broadcast channel — assigned once in init
+
+    private let dataChannelName = "messages-changes"
+    let dataChannel: RealtimeChannelV2                      // postgres change channel
+
+    // Postgres changes channel — subscribed once in init(), exactly like the broadcast channel.
+    // The SDK automatically re-joins all channels with the updated JWT whenever setAuth() is
+    // called internally (on sign-in and sign-out), so no manual start/stop per sign-in is needed.
+    // Subscribing inside the authStateChanges callback races against the SDK's own setAuth()
+    // listener — the subscription goes out with the stale anon key, events are 401'd server-side,
+    // and the SDK silently drops them, leaving for-await-in permanently silent.
+    private let messagesChangedSubject = PassthroughSubject<Void, Never>()
+    var messagesChangedPublisher: AnyPublisher<Void, Never> { messagesChangedSubject.eraseToAnyPublisher() }
+
+    // external code may read these but only DatabaseConnector itself should write them
+    private(set) var isAuthenticated = false
+    private(set) var userProfile: UserProfile? = nil
 
     init() {
-        // from supabase project
-        let supabaseUrl = URL(string: "https://zypneokzfymonnoxpgdz.supabase.co")!
-        let supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp5cG5lb2t6Znltb25ub3hwZ2R6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcxOTgyNzcsImV4cCI6MjA2Mjc3NDI3N30.KktrFMFf6tgby1yVtePAJK7n5IFt6kz3CrpogCrp9DQ"
-        
-        // supabase access
-        client = SupabaseClient(supabaseURL: supabaseUrl, supabaseKey: supabaseAnonKey)
-        
-        // broadcast access
-        channel = client.realtimeV2.channel(broadcastChannel) {
+        // credentials are defined in Config/SupabaseConfig.swift — keep them out of here
+        client = SupabaseClient(supabaseURL: SupabaseConfig.url, supabaseKey: SupabaseConfig.publishableKey)
+
+        // broadcast channel
+        broadcastChannel = client.realtimeV2.channel(broadcastChannelName) {
             $0.broadcast.acknowledgeBroadcasts = true
             $0.broadcast.receiveOwnBroadcasts = true
         }
         
+        // data changed channel
+        dataChannel = client.realtimeV2.channel(dataChannelName)
+
         // auth change observer
         Task {
             logger.notice("[DatabaseConnector] start observer")
@@ -96,15 +109,15 @@ final class DatabaseConnector {
                 }
             }
         }
-        
+
         // broadcast listener
         Task {
-            await channel.subscribe()
-            
-            let status = "\(channel.status)"
+            await broadcastChannel.subscribe()
+
+            let status = "\(broadcastChannel.status)"
             logger.notice("[DatabaseConnector] channel status:\(status)")
 
-            for await event in channel.broadcastStream(event:broadcastEvent) {
+            for await event in broadcastChannel.broadcastStream(event:broadcastEventName) {
                 logger.notice("[DatabaseConnector] channel event:\(event)")
 
                 if let payloadMember = event["payload"] {
@@ -120,10 +133,31 @@ final class DatabaseConnector {
                 }
             }
         }
+
+        // postgres changes listener — subscribed early, SDK re-joins with fresh JWT on auth changes
+        Task {
+            // postgresChange() MUST be registered before subscribe(),
+            // it configures what database changes you want to listen
+            let changes = dataChannel.postgresChange(
+                AnyAction.self,
+                schema: "public",
+                table: "global_message_queue"
+            )
+            await dataChannel.subscribe()
+            logger.notice("[DatabaseConnector] messages realtime channel subscribed")
+
+            for await _ in changes {
+                logger.notice("[DatabaseConnector] messages table changed — signalling refetch")
+                messagesChangedSubject.send() // simply reload all
+            }
+        }
+
     }
-    
+
     // deinit { maybe something to clean up }
     
+    // information about state change is handled by state change in NetworkMonitor
+
     func signIn(email: String, password: String) {
         Task {
             do {
@@ -147,11 +181,11 @@ final class DatabaseConnector {
             }
         }
     }
-    
+
     func broadcast(payload: [String: String]) {
         Task {
             do {
-                try await channel.broadcast(event: broadcastEvent, message: payload)
+                try await broadcastChannel.broadcast(event: broadcastEventName, message: payload)
             } catch {
                 logger.error("[SupabaseConnector] broadcast error:\(error)")
             }

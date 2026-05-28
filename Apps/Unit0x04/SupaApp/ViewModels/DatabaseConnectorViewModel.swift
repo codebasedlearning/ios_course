@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import Combine
@@ -19,7 +19,8 @@ class DatabaseConnectorViewModel {
         connector.eventPublisher
             .receive(on: DispatchQueue.main)
             // also possible: .assign(to: \.isConnected, on: self)
-            .sink { event in
+            .sink { [weak self] event in   // [weak self] breaks the retain cycle: self → cancellables → sink → self
+                guard let self else { return }
                 switch event {
                 case .signedIn(let userProfile, _):
                     logger.notice("[DatabaseConnectorViewModel] user \(userProfile.displayname) signed in")
