@@ -1,20 +1,60 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "   %@" : {
+
+    },
+    "   Edit Scheme (⌘⇧<) → Run → App Language" : {
+
+    },
+    "   Settings → General → Language & Region" : {
+
+    },
+    "(%@)" : {
+
+    },
+    "(Id:%lld, postId:%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "(Id:%1$lld, postId:%2$lld)"
+          }
+        }
+      }
+    },
+    "1. On Device/Simulator:" : {
+
+    },
+    "2. In Xcode:" : {
+
+    },
+    "3. Available languages:" : {
+
+    },
+    "Available Languages in App:" : {
+
+    },
+    "Comments" : {
+
+    },
+    "Connection States:" : {
+
+    },
     "connection_state_error" : {
       "comment" : "Connection state when there's an error",
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fehler"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
           }
         },
         "es" : {
@@ -35,13 +75,13 @@
       "comment" : "Connection state when offline",
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Offline"
           }
         },
-        "de" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Offline"
@@ -65,13 +105,13 @@
       "comment" : "Connection state when online",
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Online"
           }
         },
-        "de" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Online"
@@ -90,6 +130,36 @@
           }
         }
       }
+    },
+    "Current System Language: %@" : {
+
+    },
+    "done" : {
+
+    },
+    "Err" : {
+
+    },
+    "loading" : {
+
+    },
+    "Localization" : {
+
+    },
+    "Off" : {
+
+    },
+    "On" : {
+
+    },
+    "Posts" : {
+
+    },
+    "State: %@" : {
+
+    },
+    "To test localization:" : {
+
     }
   },
   "version" : "1.0"

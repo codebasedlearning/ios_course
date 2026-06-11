@@ -33,6 +33,66 @@ enum DatabaseConnectorEvent {
     case broadcast(payload:[String:String])
 }
 
+// ── Combine vs. Swift Concurrency — a sketch ─────────────────────────────────
+//
+// This file intentionally uses BOTH paradigms so they can be compared directly.
+//
+// COMBINE (import Combine)
+//   Apple's reactive-streams library (2019).  The model is a declarative
+//   pipeline:  Publisher ──operators──► Subscriber
+//
+//   • A Publisher emits values over time (zero to many), then optionally a
+//     completion or error.  Nothing flows until a subscriber attaches.
+//   • Operators transform the stream in place: .map, .filter, .debounce,
+//     .receive(on:), …  — they return new publishers, so pipelines compose.
+//   • Subscribers attach via .sink { } (closure) or .assign(to:on:).
+//     Each subscription returns an AnyCancellable; you must store it (usually
+//     in a Set<AnyCancellable>).  When the AnyCancellable is released the
+//     subscription cancels automatically.
+//   • Push-based: the publisher drives delivery — the subscriber just reacts.
+//
+//   Lifecycle hazard: a closure inside .sink captures self by default.
+//   If self also owns the cancellables Set, you get a retain cycle:
+//     ViewModel → cancellables → sink-closure → ViewModel  (never freed)
+//   Breaking it requires [weak self] + guard let self (see ViewModel).
+//
+// SWIFT CONCURRENCY (async/await · Task · for-await-in)
+//   Structured concurrency built into the language (Swift 5.5, 2021).
+//
+//   • async functions suspend at 'await' without blocking a thread; the
+//     runtime resumes them when the awaited work is ready.
+//   • AsyncSequence is the async counterpart of Publisher.  You iterate it
+//     with 'for await value in sequence { }' inside a Task.
+//   • Pull-based: the for-await loop requests the next element; nothing is
+//     delivered until the loop iteration asks for it.
+//   • Cancellation is structural: cancelling a parent Task propagates to all
+//     child Tasks and unblocks any suspended for-await loop at the next
+//     cooperative cancellation point.  No AnyCancellable, no retain cycles.
+//   • @MainActor replaces manual DispatchQueue.main.async for UI updates.
+//
+// HOW THEY MEET IN THIS FILE
+//   The Supabase Swift SDK exposes its streaming APIs as AsyncSequences:
+//     client.auth.authStateChanges   — AsyncSequence<(AuthChangeEvent, Session?)>
+//     channel.postgresChange(...)    — AsyncSequence of database row actions
+//     channel.broadcastStream(...)   — AsyncSequence of broadcast payloads
+//   These are consumed here with 'for await' loops inside Tasks (concurrency).
+//
+//   The ViewModels are built around Combine because @Observable + SwiftUI
+//   observation wires naturally to Combine pipelines, and operators like
+//   .debounce and .receive(on:) are concise for UI-update plumbing.
+//
+//   To bridge the gap this file uses Combine Subjects as adapters:
+//     CurrentValueSubject — holds the current auth state; ViewModels subscribe
+//                           with .sink and are notified on every change.
+//     PassthroughSubject  — fires a one-shot signal when the DB table changes;
+//                           MessagesViewModel debounces it before fetching.
+//
+//   A fully async-native design would replace Subjects with AsyncStream and
+//   the ViewModel .sink calls with Tasks running for-await loops — trading
+//   Combine's operator richness for structured cancellation and actor safety.
+//   Neither is universally superior; knowing both is the goal here.
+// ─────────────────────────────────────────────────────────────────────────────
+
 final class DatabaseConnector {
     private let client: SupabaseClient
 

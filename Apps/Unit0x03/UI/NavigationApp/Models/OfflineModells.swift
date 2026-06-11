@@ -1,38 +1,86 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 
 import Foundation
-import Combine
+// import Combine                           // OLD: No longer needed with AsyncStream
 
-enum ConnectionState: Int {
+/*
+ Benefits of the new AsyncStream approach:
+  - no Combine dependency, pure Swift Concurrency
+  - less boilerplate, no cancellables storage needed
+  - clearer intent, 'for await' is more readable than sink
+  - better lifecycle, Task cancellation is explicit and clean
+  - still UI-agnostic, model layer has zero UI framework dependencies
+ */
+
+enum ConnectionState: Int, Hashable {
     case error
     case offline
     case online
+    
+    /// Returns a localized display name for the connection state.
+    /// In Xcode, add these keys to your String Catalog (Localizable.xcstrings):
+    /// - "connection_state_error"
+    /// - "connection_state_offline" 
+    /// - "connection_state_online"
+    var displayName: String {
+        switch self {
+        case .error:
+            return String(localized: "connection_state_error", 
+                         defaultValue: "Error",
+                         comment: "Connection state when there's an error")
+        case .offline:
+            return String(localized: "connection_state_offline",
+                         defaultValue: "Offline", 
+                         comment: "Connection state when offline")
+        case .online:
+            return String(localized: "connection_state_online",
+                         defaultValue: "Online",
+                         comment: "Connection state when online")
+        }
+    }
 }
 
 class OfflineModeManager {
     private(set) var state: ConnectionState = .offline
     var isOnline: Bool { state == .online }
     
-    public let modePublisher = PassthroughSubject<ConnectionState, Never>()
+    // OLD: Combine-based approach
+    // public let modePublisher = PassthroughSubject<ConnectionState, Never>()
+    
+    // NEW: AsyncStream-based approach
+    // Continuation allows us to push values into the stream from outside
+    private var continuation: AsyncStream<ConnectionState>.Continuation?
+    
+    // NEW: lazy so the stream is created only when first accessed
+    public lazy var stateStream: AsyncStream<ConnectionState> = {
+        AsyncStream { continuation in
+            self.continuation = continuation
+            continuation.yield(self.state)  // Send initial state immediately
+            continuation.onTermination = { @Sendable _ in } // cleanup here if needed
+        }
+    }()
 
     func goOffline() {
         state = .offline
         print("App is now offline.")
-        modePublisher.send(state)
+        // modePublisher.send(state)        // OLD: Combine
+        continuation?.yield(state)          // NEW: AsyncStream
     }
 
     func goOnline() {
         state = .online
         print("App is now online.")
-        modePublisher.send(state)
+        // modePublisher.send(state)        // OLD: Combine
+        continuation?.yield(state)          // NEW: AsyncStream
     }
 
     func goError() {
         state = .error
         print("App is now in error mode.")
-        modePublisher.send(state)
+        // modePublisher.send(state)        // OLD: Combine
+        continuation?.yield(state)          // NEW: AsyncStream
     }
 }
 
@@ -40,14 +88,35 @@ class OfflineModeManager {
 class OfflineViewModel {
     private(set) var currentState: ConnectionState = .offline
     
-    private var cancellables = Set<AnyCancellable>()
+    // OLD: Combine-based approach
+    // private var cancellables = Set<AnyCancellable>()
+    
+    // NEW: AsyncStream-based approach
+    private var streamTask: Task<Void, Never>?
+    
     private var manager = ServiceLocator.shared.offlineModeManager
     
     init() {
-        manager.modePublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] state in self?.currentState = state }
-            .store(in: &cancellables)
+        // OLD: Combine sink/store pattern
+        // manager.modePublisher
+        //     .receive(on: DispatchQueue.main)
+        //     .sink { [weak self] state in self?.currentState = state }
+        //     .store(in: &cancellables)
+        
+        // NEW: AsyncStream with Task
+        // Task automatically inherits @MainActor from @Observable class if needed,
+        // or we can explicitly mark the closure as @MainActor
+        streamTask = Task { @MainActor [weak self] in
+            guard let self else { return }
+            // for await automatically suspends and waits for each value
+            for await state in self.manager.stateStream {
+                self.currentState = state
+            }
+        }
+    }
+    
+    deinit {
+        streamTask?.cancel()            // clean up the task when ViewModel is deallocated
     }
     
     func goOffline() { manager.goOffline() }

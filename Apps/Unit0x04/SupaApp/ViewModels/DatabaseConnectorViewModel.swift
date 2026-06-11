@@ -6,6 +6,26 @@ import Supabase
 
 fileprivate let logger = PredefinedLogger.dataLogger
 
+// ── Combine consumption side — see DatabaseConnector.swift for the full sketch ──
+//
+// This ViewModel sits on the Combine side of the bridge:
+//   connector.eventPublisher           — an AnyPublisher<DatabaseConnectorEvent, Never>
+//   .receive(on: DispatchQueue.main)   — operator: hop to the main thread for UI writes
+//   .sink { [weak self] event in … }   — subscriber: runs the closure on each event
+//   .store(in: &cancellables)          — keeps the AnyCancellable alive as long as self
+//
+// The [weak self] in the sink closure is not optional style — it is mandatory.
+// Without it there is a reference cycle:
+//   self (ViewModel) → cancellables (Set) → AnyCancellable → sink closure → self
+// [weak self] breaks the last edge; 'guard let self' re-strengthens it safely
+// inside the closure so the body can use self normally.
+//
+// With pure Swift Concurrency this class would instead spawn a Task and run
+//   for await event in connector.eventStream { … }
+// Cancellation would be handled by cancelling the Task (no Set needed), and
+// there would be no retain-cycle risk because the closure disappears with it.
+// ─────────────────────────────────────────────────────────────────────────────
+
 @Observable
 class DatabaseConnectorViewModel {
     var isAuthenticated = false

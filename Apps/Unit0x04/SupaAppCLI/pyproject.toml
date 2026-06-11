@@ -1,0 +1,13 @@
+[project]
+name = "supaappcli"
+version = "0.1.0"
+description = "CLI listener for SupaApp broadcast and postgres-change events"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "supabase>=2.10.0",
+]
+
+[tool.uv]
+# Run with:  uv run main.py
+# First time: uv sync   (creates .venv and installs dependencies)

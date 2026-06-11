@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import CblUI
@@ -12,6 +12,9 @@ struct ContentView: View {
             PostScreen().tabItem {
                 Label("Posts", systemImage: "1.circle")
             }.tag(0)
+            LocalizationScreen().tabItem {
+                Label("Localization", systemImage: "2.circle")
+            }.tag(1)
         }
         .tint(colorScheme == .dark ? CblTheme.light : CblTheme.red)
         .onAppear { selectedTab = 0 }

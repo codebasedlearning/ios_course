@@ -123,6 +123,8 @@
 		9589BD322DA44B7B006BCEB1 /* libCblUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509EEF62DA110DA0032A1C6 /* libCblUI.a */; };
 		9589BD352DA4662D006BCEB1 /* libCblUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509EEF62DA110DA0032A1C6 /* libCblUI.a */; };
 		9589BD392DA46776006BCEB1 /* ConnectFourScreenHint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589BD382DA46773006BCEB1 /* ConnectFourScreenHint.swift */; };
+		958F26772FDAB15700CFF827 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 958F26762FDAB15700CFF827 /* Localizable.xcstrings */; };
+		958F26792FDAB16300CFF827 /* LocalizationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F26782FDAB16300CFF827 /* LocalizationScreen.swift */; };
 		9592A6332DD08D7800F047CF /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592A6312DD08D7800F047CF /* ServiceLocator.swift */; };
 		9592A63A2DD0B52A00F047CF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592A6392DD0B52A00F047CF /* LoginScreen.swift */; };
 		9592A63B2DD0B59700F047CF /* libCblUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9509EEF62DA110DA0032A1C6 /* libCblUI.a */; };
@@ -536,6 +538,8 @@
 		957968162DA3D59300C4997B /* ContentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScreen.swift; sourceTree = "<group>"; };
 		9589BD2D2DA4396A006BCEB1 /* CalculatorScreenHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorScreenHint.swift; sourceTree = "<group>"; };
 		9589BD382DA46773006BCEB1 /* ConnectFourScreenHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourScreenHint.swift; sourceTree = "<group>"; };
+		958F26762FDAB15700CFF827 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		958F26782FDAB16300CFF827 /* LocalizationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationScreen.swift; sourceTree = "<group>"; };
 		9592A6312DD08D7800F047CF /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		9592A6392DD0B52A00F047CF /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		9592A63E2DD0BCB700F047CF /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
@@ -1678,6 +1682,7 @@
 				95CE24D92DCC8D970038E9D5 /* OfflineModells.swift */,
 				952C99CB2DB9FCB400186C03 /* PostsModels.swift */,
 				95CE24D72DCC05770038E9D5 /* CommentsModels.swift */,
+				958F26762FDAB15700CFF827 /* Localizable.xcstrings */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1686,6 +1691,7 @@
 			isa = PBXGroup;
 			children = (
 				952C99CA2DB9FCB400186C03 /* PostScreen.swift */,
+				958F26782FDAB16300CFF827 /* LocalizationScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -2611,6 +2617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95CE24C62DCBB8BD0038E9D5 /* Assets.xcassets in Resources */,
+				958F26772FDAB15700CFF827 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2950,6 +2957,7 @@
 				95CE24CC2DCBBA1A0038E9D5 /* ServiceLocator.swift in Sources */,
 				95CE24C82DCBB8BD0038E9D5 /* NavigationApp.swift in Sources */,
 				95CE24C92DCBB9C90038E9D5 /* PostsModels.swift in Sources */,
+				958F26792FDAB16300CFF827 /* LocalizationScreen.swift in Sources */,
 				95CE24CA2DCBB9C90038E9D5 /* PostScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7383,11 +7391,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -7474,11 +7482,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

@@ -1,21 +1,21 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import CblUI
 
 struct PostScreen: View {
-    @Environment(OfflineViewModel.self) var offlineViewMode
+    @Environment(OfflineViewModel.self) var offlineViewModel
     @Environment(PostViewModel.self) var postViewModel
     
     var body: some View {
         CblScreen(title: "Posts Screen", image: "lego_background") {
             VStack {
                 HStack {
-                    Text("State: \(offlineViewMode.currentState)")
+                    Text("State: \(offlineViewModel.currentState.displayName)")
                     Spacer()
-                    Button("Off") { offlineViewMode.goOffline()}
-                    Button("On") { offlineViewMode.goOnline()}
-                    Button("Err") { offlineViewMode.goError()}
+                    Button("Off") { offlineViewModel.goOffline()}
+                    Button("On") { offlineViewModel.goOnline()}
+                    Button("Err") { offlineViewModel.goError()}
                 }.padding(10)
 
                 /*
@@ -42,7 +42,7 @@ struct PostScreen: View {
                     }
                 }
             }
-            .onChange(of: offlineViewMode.currentState) {
+            .onChange(of: offlineViewModel.currentState) {
                 postViewModel.fetchPosts()
             }
         }
@@ -51,14 +51,14 @@ struct PostScreen: View {
 
 struct CommentsView: View {
     @Environment(OfflineViewModel.self) var offlineViewMode
-    @Environment(CommentsViewModel.self) var viewModel
+    @Environment(CommentsViewModel.self) var commentsViewModel
 
     var postId: Int
 
     var body: some View {
         VStack {
-            Text(viewModel.isLoading ? "loading" : "done")
-            List(viewModel.comments, id: \.id) { comment in
+            Text(commentsViewModel.isLoading ? "loading" : "done")
+            List(commentsViewModel.comments, id: \.id) { comment in
                 VStack(alignment: .leading, spacing: 0) {
                     Text("(Id:\(comment.id), postId:\(comment.postId))")
                         .foregroundStyle(.gray)
@@ -74,12 +74,12 @@ struct CommentsView: View {
             .scrollContentBackground(.hidden)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onAppear {
-                viewModel.fetchComments(forPostId: postId)
+                commentsViewModel.fetchComments(forPostId: postId)
             }
         }
         .background(Color.mint)
         .onChange(of: offlineViewMode.currentState) {
-            viewModel.fetchComments(forPostId: postId)
+            commentsViewModel.fetchComments(forPostId: postId)
         }
     }
 }

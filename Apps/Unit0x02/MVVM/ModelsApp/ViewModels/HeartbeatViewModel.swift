@@ -14,6 +14,9 @@ import Foundation
  annotated '@MainActor'. We skip it here because the VM conforms to the
  (non-isolated) SensorDataReceiver protocol — applying @MainActor would require
  also marking 'didReceiveSensorData' as 'nonisolated' and dispatching to MainActor inside.
+ 
+ @MainActor is a Swift concurrency annotation that guarantees all code runs on the main thread.
+ If a method is 'not isolated' then it can be called from any thread.
  */
 
 // @MainActor

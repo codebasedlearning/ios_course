@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import Foundation
@@ -19,6 +19,21 @@ class CommentsViewModel {
 
     private var repository = ServiceLocator.shared.commentsRepository
 
+    // NEW: Async/await with Task
+    func fetchComments(forPostId postId: Int) {
+        Task { @MainActor in
+            comments = []
+            isLoading = true
+            print("fetch 1")
+            
+            let newComments = await repository.fetchComments(forPostId: postId)
+            
+            comments = newComments
+            isLoading = false
+        }
+    }
+    
+    /* OLD: Completion handler approach
     func fetchComments(forPostId postId: Int) {
         comments = []
         isLoading = true
@@ -28,9 +43,38 @@ class CommentsViewModel {
             self?.comments = newComments
         }
     }
+    */
 }
 
 class CommentsRepository {
+    
+    // NEW: Async/await - returns value directly, no completion handler
+    func fetchComments(forPostId postId: Int) async -> [Comment] {
+        let manager = ServiceLocator.shared.offlineModeManager
+
+        guard manager.isOnline, let url = URL(string: "https://jsonplaceholder.typicode.com/posts/\(postId)/comments") else {
+            return OfflineData.getComments(forPostId: postId, state: manager.state)
+        }
+        
+        print("start URLRequest Comments")
+        
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 5
+
+        do {
+            // NEW: async/await URLSession API - no completion handler, no .resume() needed
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let decodedResponse = try JSONDecoder().decode([Comment].self, from: data)
+            return decodedResponse
+            
+        } catch {
+            print("Network/decode error: \(error)")
+            manager.goError()
+            return OfflineData.getComments(forPostId: postId, state: manager.state)
+        }
+    }
+    
+    /* OLD: Completion handler approach
     // use non-optional [Comment] to match PostsRepository's convention
     func fetchComments(forPostId postId: Int, completion: @escaping ([Comment]) -> Void) {
         let manager = ServiceLocator.shared.offlineModeManager
@@ -63,4 +107,5 @@ class CommentsRepository {
             }
         }.resume()
     }
+    */
 }
