@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530BFD6E32BB51ADFBC7BF2B /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */; };
 		9509EDFC2D9E66000032A1C6 /* FirstApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509EDE32D9E66000032A1C6 /* FirstApp.swift */; };
 		9509EDFD2D9E66000032A1C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509EDE22D9E66000032A1C6 /* ContentView.swift */; };
 		9509EDFE2D9E66000032A1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9509EDE12D9E66000032A1C6 /* Assets.xcassets */; };
@@ -139,8 +140,6 @@
 		95C636A02DCE8E4D00322EF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6369C2DCE8E4D00322EF3 /* ContentView.swift */; };
 		95C636A12DCE8E4D00322EF3 /* SupaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6369D2DCE8E4D00322EF3 /* SupaApp.swift */; };
 		95C636A32DCE8EA500322EF3 /* DatabaseConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C636A22DCE8EA300322EF3 /* DatabaseConnector.swift */; };
-		530BFD6E32BB51ADFBC7BF2B /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */; };
-		9E1CB1AFDBFC922745A64554 /* LocalChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */; };
 		95C636A62DCE8F2C00322EF3 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 95C636A52DCE8F2C00322EF3 /* Auth */; };
 		95C636A82DCE8F2C00322EF3 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 95C636A72DCE8F2C00322EF3 /* Functions */; };
 		95C636AA2DCE8F2C00322EF3 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 95C636A92DCE8F2C00322EF3 /* PostgREST */; };
@@ -185,6 +184,7 @@
 		9D2026D60000000000000004 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D60000000000000003 /* AuthService.swift */; };
 		9D2026D70000000000000002 /* SecretsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D70000000000000001 /* SecretsViewModel.swift */; };
 		9D2026D70000000000000004 /* SecretsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2026D70000000000000003 /* SecretsView.swift */; };
+		9E1CB1AFDBFC922745A64554 /* LocalChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -557,8 +557,6 @@
 		95C6369C2DCE8E4D00322EF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		95C6369D2DCE8E4D00322EF3 /* SupaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupaApp.swift; sourceTree = "<group>"; };
 		95C636A22DCE8EA300322EF3 /* DatabaseConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnector.swift; sourceTree = "<group>"; };
-		E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
-		AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChannel.swift; sourceTree = "<group>"; };
 		95C636B12DCEA3EA00322EF3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		95CE248D2DCB90A10038E9D5 /* x03_heart_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = x03_heart_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95CE24982DCB90C30038E9D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -598,6 +596,8 @@
 		9D2026D60000000000000003 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		9D2026D70000000000000001 /* SecretsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsViewModel.swift; sourceTree = "<group>"; };
 		9D2026D70000000000000003 /* SecretsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsView.swift; sourceTree = "<group>"; };
+		AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChannel.swift; sourceTree = "<group>"; };
+		E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -7399,11 +7399,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 8JDANG6D83;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -7490,11 +7490,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 8JDANG6D83;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
