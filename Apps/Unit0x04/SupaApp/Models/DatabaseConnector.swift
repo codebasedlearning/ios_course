@@ -96,13 +96,23 @@ enum DatabaseConnectorEvent {
 final class DatabaseConnector {
     private let client: SupabaseClient
 
-    private let eventSubject = CurrentValueSubject<DatabaseConnectorEvent, Never>(.signedOut)
+    // ── OLD Combine version (kept for comparison, not deleted) ──────────────
+    //
+    // private let eventSubject = CurrentValueSubject<DatabaseConnectorEvent, Never>(.signedOut)
+    //
+    // // same idea as in NetworkMonitor
+    // var eventPublisher: AnyPublisher<DatabaseConnectorEvent, Never> { eventSubject.eraseToAnyPublisher() }
+    // ──────────────────────────────────────────────────────────────────────
 
     // expose the underlying Supabase SDK client for direct queries
     var supabaseClient: SupabaseClient { client }
 
-    // same idea as in NetworkMonitor
-    var eventPublisher: AnyPublisher<DatabaseConnectorEvent, Never> { eventSubject.eraseToAnyPublisher() }
+    // NEW: AsyncStream replaces CurrentValueSubject. Only DatabaseConnectorViewModel
+    // consumes this, so single-consumer AsyncStream semantics are fine. The "always
+    // has a current value" behaviour of CurrentValueSubject is replicated by yielding
+    // .signedOut right after creating the stream, below in init().
+    let eventStream: AsyncStream<DatabaseConnectorEvent>
+    private let eventContinuation: AsyncStream<DatabaseConnectorEvent>.Continuation
 
     private let broadcastChannelName = "mobileApp-channel"
     private let broadcastEventName = "mobileApp-event"          // "*" does not work...
@@ -117,14 +127,78 @@ final class DatabaseConnector {
     // Subscribing inside the authStateChanges callback races against the SDK's own setAuth()
     // listener — the subscription goes out with the stale anon key, events are 401'd server-side,
     // and the SDK silently drops them, leaving for-await-in permanently silent.
-    private let messagesChangedSubject = PassthroughSubject<Void, Never>()
-    var messagesChangedPublisher: AnyPublisher<Void, Never> { messagesChangedSubject.eraseToAnyPublisher() }
+    //
+    // ── OLD Combine version (kept for comparison, not deleted) ──────────────
+    //
+    // private let messagesChangedSubject = PassthroughSubject<Void, Never>()
+    // var messagesChangedPublisher: AnyPublisher<Void, Never> { messagesChangedSubject.eraseToAnyPublisher() }
+    // ──────────────────────────────────────────────────────────────────────
+
+    // NEW: AsyncStream replaces PassthroughSubject. No initial value to seed —
+    // PassthroughSubject never had one either, it only ever signalled "something changed".
+    let messagesChangedStream: AsyncStream<Void>
+    private let messagesChangedContinuation: AsyncStream<Void>.Continuation
 
     // external code may read these but only DatabaseConnector itself should write them
     private(set) var isAuthenticated = false
     private(set) var userProfile: UserProfile? = nil
 
+    // ── Why a SECOND copy of "who is signed in" exists ──────────────────────
+    //
+    // isAuthenticated/userProfile above are driven entirely by the Supabase SDK's
+    // authStateChanges stream — and that stream has a documented habit of
+    // reporting .signedOut (or .initialSession with session == nil) even though
+    // a perfectly valid refresh token is sitting in the keychain. Not a
+    // hypothetical: see supabase-swift issue #630 ("auto-refreshing of tokens
+    // can fail and never restart again" — airplane mode is the literal repro
+    // steps) and org discussion #35158 (session straight-up missing after an
+    // app relaunch). It's a known soft spot, not something this app can fix in
+    // a third-party SDK.
+    //
+    // Composing a message is a 100%-local SwiftData write (see LocalMessage /
+    // MessagesViewModel.insertMessage) — it has no business being blocked by a
+    // live, network-derived flag that's known to occasionally lie. So:
+    //   - lastKnownUserId/lastKnownEmail are written the moment we see a REAL
+    //     profile (below), and persisted in UserDefaults so they survive an
+    //     app relaunch while offline.
+    //   - they are cleared ONLY by an explicit, user-initiated signOut() call —
+    //     never by the authStateChanges .signedOut case, since that case fires
+    //     for "you actually signed out" and "the SDK gave up refreshing" alike,
+    //     and this app has no way to tell those two apart from here.
+    //   - isAuthenticated/userProfile stay authoritative for anything that
+    //     actually talks to the network (showing a login screen, the push in
+    //     syncPendingMessages) — this is purely the offline-safe fallback for
+    //     "whose row is this," not a replacement for real auth state.
+    private static let lastKnownUserIdKey = "DatabaseConnector.lastKnownUserId"
+    private static let lastKnownEmailKey = "DatabaseConnector.lastKnownEmail"
+
+    var lastKnownUserId: UUID? {
+        UserDefaults.standard.string(forKey: Self.lastKnownUserIdKey).flatMap(UUID.init)
+    }
+    var lastKnownEmail: String? {
+        UserDefaults.standard.string(forKey: Self.lastKnownEmailKey)
+    }
+
+    private func rememberIdentity(_ profile: UserProfile) {
+        UserDefaults.standard.set(profile.id.uuidString, forKey: Self.lastKnownUserIdKey)
+        UserDefaults.standard.set(profile.email, forKey: Self.lastKnownEmailKey)
+    }
+
+    private func forgetIdentity() {
+        UserDefaults.standard.removeObject(forKey: Self.lastKnownUserIdKey)
+        UserDefaults.standard.removeObject(forKey: Self.lastKnownEmailKey)
+    }
+
     init() {
+        let (eventStream, eventContinuation) = AsyncStream.makeStream(of: DatabaseConnectorEvent.self)
+        self.eventStream = eventStream
+        self.eventContinuation = eventContinuation
+        self.eventContinuation.yield(.signedOut) // seed, mirrors CurrentValueSubject's initial value
+
+        let (messagesChangedStream, messagesChangedContinuation) = AsyncStream.makeStream(of: Void.self)
+        self.messagesChangedStream = messagesChangedStream
+        self.messagesChangedContinuation = messagesChangedContinuation
+
         // credentials are defined in Config/SupabaseConfig.swift — keep them out of here
         client = SupabaseClient(supabaseURL: SupabaseConfig.url, supabaseKey: SupabaseConfig.publishableKey)
 
@@ -151,7 +225,8 @@ final class DatabaseConnector {
                         let userProfile = UserProfile(id: session.user.id, email: email)
                         self.isAuthenticated = true
                         self.userProfile = userProfile
-                        eventSubject.send(.signedIn(userProfile: userProfile, session: session))
+                        rememberIdentity(userProfile) // see lastKnownUserId — survives a flaky/offline authStateChanges later
+                        eventContinuation.yield(.signedIn(userProfile: userProfile, session: session)) // was eventSubject.send(...)
                     } catch {
                         if event == .signedIn {
                             logger.notice("[DatabaseConnector] profile error:\(error)")
@@ -161,7 +236,7 @@ final class DatabaseConnector {
                 case .signedOut:
                     self.isAuthenticated = false
                     self.userProfile = nil
-                    eventSubject.send(.signedOut)
+                    eventContinuation.yield(.signedOut) // was eventSubject.send(...)
                 // case .tokenRefreshed:   // handle token refresh if necessary
                 // case .userUpdated:      // handle user updates if necessary
                 default:
@@ -184,7 +259,7 @@ final class DatabaseConnector {
                     switch payloadMember {
                     case .object(let dict):
                         let stringDict = dict.compactMapValues { $0.stringValue }
-                        eventSubject.send(.broadcast(payload: stringDict))
+                        eventContinuation.yield(.broadcast(payload: stringDict)) // was eventSubject.send(...)
                     default:
                         break
                     }
@@ -208,14 +283,21 @@ final class DatabaseConnector {
 
             for await _ in changes {
                 logger.notice("[DatabaseConnector] messages table changed — signalling refetch")
-                messagesChangedSubject.send() // simply reload all
+                messagesChangedContinuation.yield() // was messagesChangedSubject.send() — simply reload all
             }
         }
 
     }
 
-    // deinit { maybe something to clean up }
-    
+    deinit {
+        // was: "// deinit { maybe something to clean up }" — now there's something to clean up:
+        // finish() lets any for-await loop over these streams (in the ViewModels) end gracefully.
+        // Moot in practice since DatabaseConnector is a ServiceLocator singleton that never
+        // deinitialises during a normal app run — but correct is correct.
+        eventContinuation.finish()
+        messagesChangedContinuation.finish()
+    }
+
     // information about state change is handled by state change in NetworkMonitor
 
     func signIn(email: String, password: String) {
@@ -231,6 +313,12 @@ final class DatabaseConnector {
     }
 
     func signOut() {
+        // Cleared here — the one place we know for certain this is the user's
+        // own intent, not the SDK's auth stream guessing. Cleared up front,
+        // independent of whether the network signOut below actually succeeds:
+        // once the user has asked to sign out, new local writes shouldn't keep
+        // landing under their old identity regardless of what Supabase says.
+        forgetIdentity()
         Task {
             do {
                 logger.notice("[SupabaseConnector] sign out")

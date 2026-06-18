@@ -139,6 +139,8 @@
 		95C636A02DCE8E4D00322EF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6369C2DCE8E4D00322EF3 /* ContentView.swift */; };
 		95C636A12DCE8E4D00322EF3 /* SupaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C6369D2DCE8E4D00322EF3 /* SupaApp.swift */; };
 		95C636A32DCE8EA500322EF3 /* DatabaseConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C636A22DCE8EA300322EF3 /* DatabaseConnector.swift */; };
+		530BFD6E32BB51ADFBC7BF2B /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */; };
+		9E1CB1AFDBFC922745A64554 /* LocalChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */; };
 		95C636A62DCE8F2C00322EF3 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 95C636A52DCE8F2C00322EF3 /* Auth */; };
 		95C636A82DCE8F2C00322EF3 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 95C636A72DCE8F2C00322EF3 /* Functions */; };
 		95C636AA2DCE8F2C00322EF3 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 95C636A92DCE8F2C00322EF3 /* PostgREST */; };
@@ -555,6 +557,8 @@
 		95C6369C2DCE8E4D00322EF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		95C6369D2DCE8E4D00322EF3 /* SupaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupaApp.swift; sourceTree = "<group>"; };
 		95C636A22DCE8EA300322EF3 /* DatabaseConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnector.swift; sourceTree = "<group>"; };
+		E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
+		AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChannel.swift; sourceTree = "<group>"; };
 		95C636B12DCEA3EA00322EF3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		95CE248D2DCB90A10038E9D5 /* x03_heart_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = x03_heart_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95CE24982DCB90C30038E9D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1532,6 +1536,8 @@
 			children = (
 				95C636A22DCE8EA300322EF3 /* DatabaseConnector.swift */,
 				9510B6432FC82B24008EC12D /* SupabaseConfig.swift */,
+				E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */,
+				AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2931,6 +2937,8 @@
 				9592A6452DD0E1B500F047CF /* Extensions.swift in Sources */,
 				95C636A32DCE8EA500322EF3 /* DatabaseConnector.swift in Sources */,
 				9510B6452FC82BF9008EC12D /* SupabaseConfig.swift in Sources */,
+				530BFD6E32BB51ADFBC7BF2B /* LocalMessage.swift in Sources */,
+				9E1CB1AFDBFC922745A64554 /* LocalChannel.swift in Sources */,
 				95C636A02DCE8E4D00322EF3 /* ContentView.swift in Sources */,
 				95C636A12DCE8E4D00322EF3 /* SupaApp.swift in Sources */,
 			);

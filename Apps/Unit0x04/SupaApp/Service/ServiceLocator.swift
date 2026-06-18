@@ -1,6 +1,7 @@
 // (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import Foundation
+import SwiftData
 
 class ServiceLocator {
     // Swift initialises 'static let' exactly once, lazily on first access, and
@@ -18,4 +19,26 @@ class ServiceLocator {
     // 'shared', and never touched again.
     let networkMonitor = NetworkMonitor()
     let databaseConnector = DatabaseConnector()
+
+    // Backing store for the offline-first message outbox/cache (LocalMessage,
+    // see MessagesViewModel). One ModelContainer for the whole app, same
+    // singleton-via-'let' reasoning as the two services above; each consumer
+    // creates its own ModelContext from it rather than sharing one context.
+    //
+    // LocalChannel.self is listed alongside LocalMessage.self because ONE
+    // ModelContainer holds the ENTIRE schema, not one table — every @Model
+    // type that should get a table in the underlying SQLite file has to be
+    // named here. Forget this and LocalChannel just silently has no storage:
+    // not a compile error, a runtime one the first time you fetch/insert it.
+    // SwiftData also walks the @Relationship graph from the types you list,
+    // so technically just `LocalMessage.self` would have pulled LocalChannel
+    // in automatically too — but listing both is clearer and doesn't rely on
+    // remembering that inference rule.
+    let modelContainer: ModelContainer = {
+        do {
+            return try ModelContainer(for: LocalMessage.self, LocalChannel.self)
+        } catch {
+            fatalError("[ServiceLocator] could not create ModelContainer: \(error)")
+        }
+    }()
 }

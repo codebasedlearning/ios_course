@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import SwiftData
@@ -27,6 +27,13 @@ struct AuthorsScreen: View {
  Declares a live-binding read-only collection from SwiftData.
  - Automatically re-evaluates when the database changes.
  - Injects SwiftUI reactivity: @Query is re-fetched when needed.
+ - @Query takes a FetchDescriptor<T> (predicate, sort, limit) and gives
+    back a live, auto-updating array of results. The type parameter T
+    tells it which @Model to fetch.
+ - @Query only works inside a View that has a container installed up
+    the hierarchy via .modelContainer(...). Try using @Query in a plain
+    class or an @Observable view model and it won't work — there's
+    no environment to pull from.
  
  can also
  
@@ -45,6 +52,7 @@ struct AuthorsScreen: View {
  */
 
 struct AuthorsView: View {
+    // here is the .modelContext from the .modelContainer
     @Environment(\.modelContext) private var modelContext
 
     @State private var searchText = ""

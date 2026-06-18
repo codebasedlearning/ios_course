@@ -15,15 +15,22 @@ struct ContentView: View {
             LoginScreen()
                 .tabItem { Label("Login", systemImage: "1.circle") }
                 .tag(0)
-            if connector.isAuthenticated {
-                MessagesScreen()
-                    .tabItem { Label("Messages", systemImage: "2.circle") }
-                    .tag(1)
-            }
+            //if connector.isAuthenticated {
+            // always visible for offline-mode
+            MessagesScreen()
+                .tabItem { Label("Messages", systemImage: "2.circle") }
+                .tag(1)
+            //}
         }
         .tint(colorScheme == .dark ? CblTheme.light : CblTheme.red)
-        .onChange(of: connector.isAuthenticated) { _, isAuthenticated in
-            selectedTab = isAuthenticated ? 1 : 0
+        // NOT connector.isAuthenticated: that's the live, SDK-driven flag that's
+        // documented to blip false while offline (see DatabaseConnector's long
+        // comment on lastKnownUserId). Keying the tab switch on it meant an
+        // offline blip could yank you back to Login mid-compose on the Messages
+        // tab. hasKnownIdentity only changes on a real sign-in or an explicit
+        // signOut() call, so a flaky network can't move it.
+        .onChange(of: connector.hasKnownIdentity) { _, hasIdentity in
+            selectedTab = hasIdentity ? 1 : 0
         }
     }
 }
