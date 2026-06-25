@@ -5,18 +5,20 @@ import SpriteKit
 import CblUI
 
 struct SpritesScreen: View {
-    var scene: SKScene {
+    @State private var scene: SKScene = SpritesScreen.makeScene()
+
+    // one way to reset the scene: swap the scene instance and change something observed
+    @State private var resetID = UUID()
+
+    static func makeScene() -> SKScene {
         let scene = GameScene()
         scene.size = CGSize(width: 300, height: 450)
         scene.scaleMode = .fill
         return scene
     }
-    
-    // one way to reset the scene: change something observed
-    @State private var resetID = UUID()
-    
+
     var body: some View {
-        CblScreen(title: "Sprites", image: "lego_background") {
+        CblScreen(title: "Sprites", image: "harbor1") {
             GeometryReader { geo in
                 VStack(spacing:0) {
                     Divider()
@@ -24,11 +26,12 @@ struct SpritesScreen: View {
                     SpriteView(scene: scene)
                         .id(resetID)
                         .frame(width: geo.size.width*0.9, height: geo.size.height*0.7)
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                        .border(Color.black)
                         .ignoresSafeArea()
-                    
+
                     Button("Restart Scene") {
-                        resetID = UUID() // Change the identifier to restart the scene
+                        scene = SpritesScreen.makeScene()
+                        resetID = UUID() // change the identifier to force-replace the scene
                     }
                 }
             }
@@ -41,7 +44,6 @@ struct SpritesScreen: View {
  It is used to display SpriteKit content on an SKView.
  */
 class GameScene: SKScene {
-    var bar: SKSpriteNode!
     var wall1: SKSpriteNode!
     var wall2: SKSpriteNode!
     var wall3: SKSpriteNode!
@@ -152,4 +154,8 @@ class GameScene: SKScene {
  func updateUIView(_ uiView: SKView, context: Context) {
     ...
  */
+
+#Preview {
+    SpritesScreen()
+}
 

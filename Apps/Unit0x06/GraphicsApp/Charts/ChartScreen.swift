@@ -6,8 +6,7 @@ import CblUI
 
 struct ChartScreen: View {
     @State private var salesModel = SalesData()
-    @State private var product_no = 0
-    
+
     var body: some View {
         CblScreen(title: "Charts", image: "harbor1") {
             Chart {
@@ -57,4 +56,8 @@ struct ChartScreen: View {
             .padding(10)
         }
     }
+}
+
+#Preview {
+    ChartScreen()
 }

@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import CblUI
@@ -25,7 +25,7 @@ struct ContentView: View {
                 Label("AR", systemImage: "5.circle")
             }.tag(4)
         }
-        .accentColor(colorScheme == .dark ? CblTheme.light : CblTheme.red)
+        .tint(colorScheme == .dark ? CblTheme.light : CblTheme.red)
         .onAppear { selectedTab = 0 }
     }
 }

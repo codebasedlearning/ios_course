@@ -6,7 +6,6 @@ import CoreMotion
 
 
 class MazeGameScene: SKScene {
-    var bar: SKSpriteNode!
     var wall1: SKSpriteNode!
     var wall2: SKSpriteNode!
     var wall3: SKSpriteNode!
@@ -74,6 +73,13 @@ class MazeGameScene: SKScene {
             motionManager.stopAccelerometerUpdates()
         }
     }
+
+    // called when the scene is about to be removed from its view (e.g. on restart) -
+    // make sure the accelerometer doesn't keep running in the background
+    override func willMove(from view: SKView) {
+        stopReadingSensors()
+    }
+
     func createBall(position: CGPoint) -> SKSpriteNode {
         let ball = SKSpriteNode(imageNamed: "marble3")
         ball.size = CGSize(width: 50, height: 50)
@@ -81,7 +87,7 @@ class MazeGameScene: SKScene {
         // this enables interaction
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
         ball.physicsBody?.restitution = 0.8 // bouncing
-        ball.physicsBody?.friction = 10.2
+        ball.physicsBody?.friction = 0.2
         ball.physicsBody?.linearDamping = 0.0
         ball.physicsBody?.angularDamping = 0.0
         return ball

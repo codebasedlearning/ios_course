@@ -1,23 +1,28 @@
 // (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
-import Charts
 import CblUI
 import RealityKit
 import ARKit
 
 struct ARScreen: View {
-    
+
     var body: some View {
-        CblScreen(title: "Maze", image: "lego_background") {
+        CblScreen(title: "AR", image: "harbor1") {
             ARViewContainer()
         }
     }
 }
 
+/*
+ UIViewRepresentable is a SwiftUI protocol that lets you embed a classic UIKit
+ view (here ARView from RealityKit) into the SwiftUI view hierarchy.
+ SwiftUI invokes makeUIView(context:) exactly once when the view first appears
+ to build and configure the UIKit view, and then calls updateUIView(_:context:)
+ whenever SwiftUI state changes and the view needs to sync.
+ */
+
 struct ARViewContainer: UIViewRepresentable {
-    @State private var lastScale: CGFloat = 1.0
-    
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)

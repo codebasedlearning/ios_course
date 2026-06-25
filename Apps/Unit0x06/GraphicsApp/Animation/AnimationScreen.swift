@@ -8,7 +8,7 @@ struct AnimationScreen: View {
     @State var ballModel: BallModel = BallModel()
     
     var body: some View {
-        CblScreen(title: "Animation", image: "lego_background") {
+        CblScreen(title: "Animation", image: "harbor1") {
             GeometryReader { geo in
                 VStack(spacing:0) {
                     ZStack {
@@ -18,7 +18,6 @@ struct AnimationScreen: View {
                             .frame(width: ballModel.wallSize.width, height: ballModel.wallSize.height)
                             .position(ballModel.wallPosition)
                     }
-                    //.edgesIgnoringSafeArea(.all)
                     .background(Color.green)
                     .frame(width: geo.size.width, height: geo.size.height*0.8)
                     
@@ -33,7 +32,9 @@ struct AnimationScreen: View {
                                 .background(Color.green)
                                 .clipShape(Circle())
                                 .shadow(radius: 10)
-                        }).padding(5)
+                        })
+                        .accessibilityLabel("Start animation")
+                        .padding(5)
                         Button(action: {
                             ballModel.stopAnimation()
                         }, label: {
@@ -44,6 +45,7 @@ struct AnimationScreen: View {
                                 .clipShape(Circle())
                                 .shadow(radius: 10)
                         })
+                        .accessibilityLabel("Stop animation")
                     }.padding(5)
                     Spacer()
                 }
@@ -101,7 +103,7 @@ class BallModel {
         position.x += velocity.x
         position.y += velocity.y
         
-        if position.x < 0 || position.x > size.width {  // UIScreen.main.bounds.width
+        if position.x < 0 || position.x > size.width {
             velocity.x = -velocity.x
         }
         
@@ -120,4 +122,8 @@ class BallModel {
         // Gravity
         velocity.y += 0.8
     }
+}
+
+#Preview {
+    AnimationScreen()
 }
