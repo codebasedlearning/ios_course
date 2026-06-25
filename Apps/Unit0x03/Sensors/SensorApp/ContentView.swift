@@ -24,6 +24,12 @@ struct ContentView: View {
             ScannerScreen().tabItem {
                 Label("Scanner", systemImage: "5.circle")
             }.tag(4)
+            NFCScreen().tabItem {
+                Label("NFC", systemImage: "6.circle")
+            }.tag(5)
+            SmartCardScreen().tabItem {
+                Label("Smart Card", systemImage: "7.circle")
+            }.tag(6)
         }
         .tint(colorScheme == .dark ? CblTheme.light : CblTheme.red)
         .onAppear { selectedTab = 0 }

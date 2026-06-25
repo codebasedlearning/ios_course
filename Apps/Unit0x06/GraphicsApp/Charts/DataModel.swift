@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import Foundation
 
@@ -28,7 +28,7 @@ class SalesData {
     
     func generateRandomSalesData() -> [Sales] {
         var sales: [Sales] = []
-        for year in 2001...2024 {
+        for year in 2001...2026 {
             sales.append(Sales(year: year, amount: Int.random(in: 3500...4500)))
         }
         return sales

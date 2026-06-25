@@ -1,4 +1,4 @@
-// (C) 2025 Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
+// (C) Alexander Voß, a.voss@fh-aachen.de, info@codebasedlearning.dev
 
 import SwiftUI
 import Charts
@@ -49,14 +49,12 @@ struct ChartScreen: View {
                 "Ships": .orange
             ])
             .chartLegend(position: .bottom)
-            //.frame(height: geo.size.height*0.6)
             .chartScrollableAxes(.horizontal)
             .chartXVisibleDomain(length: 8)
             .chartScrollPosition(initialX:2001)
             .chartYVisibleDomain(length: 1000)
             .chartYScale(domain: 3300...4700)
             .padding(10)
-            //Spacer()
         }
     }
 }

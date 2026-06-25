@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3154B40899CA12E329872759 /* NFCScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B4FFAA1077C16535136C /* NFCScreen.swift */; };
 		530BFD6E32BB51ADFBC7BF2B /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */; };
+		7354CFBBCA6F6311FE9AC283 /* SmartCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B56A347FB9E5996DA75D6FD /* SmartCardScreen.swift */; };
 		9509EDFC2D9E66000032A1C6 /* FirstApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509EDE32D9E66000032A1C6 /* FirstApp.swift */; };
 		9509EDFD2D9E66000032A1C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509EDE22D9E66000032A1C6 /* ContentView.swift */; };
 		9509EDFE2D9E66000032A1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9509EDE12D9E66000032A1C6 /* Assets.xcassets */; };
@@ -132,6 +134,9 @@
 		9592A63F2DD0BCBD00F047CF /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592A63E2DD0BCB700F047CF /* StatusView.swift */; };
 		9592A6422DD0D42B00F047CF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592A6412DD0D42800F047CF /* Logger.swift */; };
 		9592A6452DD0E1B500F047CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592A6442DD0E1AF00F047CF /* Extensions.swift */; };
+		95A0323E2FECF5F10097B1DB /* MazeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A0323D2FECF5F10097B1DB /* MazeScreen.swift */; };
+		95A032402FECF6260097B1DB /* ARScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A0323F2FECF6260097B1DB /* ARScreen.swift */; };
+		95A032422FECF8000097B1DB /* MazeGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A032412FECF8000097B1DB /* MazeGameScene.swift */; };
 		95B060892DDC9ECD00B66C6D /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B060882DDC9EC900B66C6D /* DataModels.swift */; };
 		95C27E7F2DD47D5F00D88B17 /* MessagesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C27E7E2DD47D5F00D88B17 /* MessagesScreen.swift */; };
 		95C27E812DD47DAA00D88B17 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C27E802DD47DAA00D88B17 /* MessagesViewModel.swift */; };
@@ -402,6 +407,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B56A347FB9E5996DA75D6FD /* SmartCardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCardScreen.swift; sourceTree = "<group>"; };
+		5BB6553043B0422A98823161 /* SensorApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SensorApp.entitlements; sourceTree = "<group>"; };
 		9505E7F72D992FCA004DB066 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9505E7FC2D998B62004DB066 /* m_first_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = m_first_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9505E80F2D998BC7004DB066 /* m_first_views_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = m_first_views_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -548,6 +555,9 @@
 		9592A6412DD0D42800F047CF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		9592A6442DD0E1AF00F047CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9592A64A2DD0EFE800F047CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		95A0323D2FECF5F10097B1DB /* MazeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeScreen.swift; sourceTree = "<group>"; };
+		95A0323F2FECF6260097B1DB /* ARScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScreen.swift; sourceTree = "<group>"; };
+		95A032412FECF8000097B1DB /* MazeGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGameScene.swift; sourceTree = "<group>"; };
 		95B060882DDC9EC900B66C6D /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
 		95C27E7E2DD47D5F00D88B17 /* MessagesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesScreen.swift; sourceTree = "<group>"; };
 		95C27E802DD47DAA00D88B17 /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
@@ -597,6 +607,7 @@
 		9D2026D70000000000000001 /* SecretsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsViewModel.swift; sourceTree = "<group>"; };
 		9D2026D70000000000000003 /* SecretsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsView.swift; sourceTree = "<group>"; };
 		AA40E0DBFDA43BEE2F8D7621 /* LocalChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChannel.swift; sourceTree = "<group>"; };
+		DF28B4FFAA1077C16535136C /* NFCScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCScreen.swift; sourceTree = "<group>"; };
 		E16ECBC0BF5097FE6E04EAC5 /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1367,6 +1378,8 @@
 		9533E03F2DF05737006C393D /* GraphicsApp */ = {
 			isa = PBXGroup;
 			children = (
+				95A0323C2FECF5B10097B1DB /* Maze */,
+				95A0323B2FECF5A90097B1DB /* AR */,
 				9533E0512DF05C37006C393D /* Sprites */,
 				9533E04D2DF05B51006C393D /* Animation */,
 				9533E0482DF059C7006C393D /* Charts */,
@@ -1568,6 +1581,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		95A0323B2FECF5A90097B1DB /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				95A0323F2FECF6260097B1DB /* ARScreen.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		95A0323C2FECF5B10097B1DB /* Maze */ = {
+			isa = PBXGroup;
+			children = (
+				95A032412FECF8000097B1DB /* MazeGameScene.swift */,
+				95A0323D2FECF5F10097B1DB /* MazeScreen.swift */,
+			);
+			path = Maze;
+			sourceTree = "<group>";
+		};
 		95B53AD42FBDEC4300D5F2F8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1636,6 +1666,8 @@
 				95CE24AA2DCB9F170038E9D5 /* BTScreen.swift */,
 				95CE24AB2DCB9F170038E9D5 /* HapticScreen.swift */,
 				95CE24AC2DCB9F170038E9D5 /* ScannerScreen.swift */,
+				DF28B4FFAA1077C16535136C /* NFCScreen.swift */,
+				3B56A347FB9E5996DA75D6FD /* SmartCardScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1736,6 +1768,7 @@
 				95F9E7982DA676B30061B4E4 /* Assets.xcassets */,
 				95F9E7992DA676B30061B4E4 /* ContentView.swift */,
 				95F9E79A2DA676B30061B4E4 /* TouchApp.swift */,
+				5BB6553043B0422A98823161 /* SensorApp.entitlements */,
 			);
 			path = SensorApp;
 			sourceTree = "<group>";
@@ -2912,12 +2945,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A032402FECF6260097B1DB /* ARScreen.swift in Sources */,
 				9533E0412DF05737006C393D /* ContentView.swift in Sources */,
 				9533E0522DF05C37006C393D /* SpritesScreen.swift in Sources */,
 				9533E0422DF05737006C393D /* PhysicsApp.swift in Sources */,
 				9533E04B2DF059D8006C393D /* DataModel.swift in Sources */,
 				9533E04F2DF05B65006C393D /* AnimationScreen.swift in Sources */,
 				9533E04C2DF059D8006C393D /* ChartScreen.swift in Sources */,
+				95A0323E2FECF5F10097B1DB /* MazeScreen.swift in Sources */,
+				95A032422FECF8000097B1DB /* MazeGameScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2982,6 +3018,8 @@
 				95CE24B02DCB9F170038E9D5 /* ScannerScreen.swift in Sources */,
 				95F9E79D2DA676B30061B4E4 /* ContentView.swift in Sources */,
 				95F9E79E2DA676B30061B4E4 /* TouchApp.swift in Sources */,
+				3154B40899CA12E329872759 /* NFCScreen.swift in Sources */,
+				7354CFBBCA6F6311FE9AC283 /* SmartCardScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6402,10 +6440,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -6442,6 +6481,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.x05-swift-data-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -6486,10 +6526,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -6519,6 +6560,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fh-aachen.ios.x05-swift-data-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -6734,6 +6776,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -6753,6 +6796,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need the Camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -6818,6 +6862,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -6831,6 +6876,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need the Camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -7059,11 +7105,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -7149,11 +7195,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -7398,12 +7444,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Apps/Unit0x03/Sensors/SensorApp/SensorApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -7424,6 +7471,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NFCReaderUsageDescription = "We need NFC access to read tags and contactless cards.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need Bluetooth access to connect to your sensor.";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need Bluetooth access to connect to your sensor.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to scan QR codes.";
@@ -7432,6 +7480,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"INFOPLIST_KEY_com.apple.developer.nfc.readersession.iso7816.select-identifiers" = 325041592E5359532E4444463031;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7489,12 +7538,13 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = Apps/Unit0x03/Sensors/SensorApp/SensorApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8JDANG6D83;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -7509,6 +7559,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NFCReaderUsageDescription = "We need NFC access to read tags and contactless cards.";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need Bluetooth access to connect to your sensor.";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need Bluetooth access to connect to your sensor.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to scan QR codes.";
@@ -7517,6 +7568,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"INFOPLIST_KEY_com.apple.developer.nfc.readersession.iso7816.select-identifiers" = 325041592E5359532E4444463031;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

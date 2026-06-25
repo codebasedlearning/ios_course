@@ -14,10 +14,16 @@ struct ContentView: View {
             }.tag(0)
             AnimationScreen().tabItem {
                 Label("Animation", systemImage: "2.circle")
-            }.tag(0)
+            }.tag(1)
             SpritesScreen().tabItem {
                 Label("Sprites", systemImage: "3.circle")
-            }.tag(0)
+            }.tag(2)
+            MazeScreen().tabItem {
+                Label("Maze", systemImage: "4.circle")
+            }.tag(3)
+            ARScreen().tabItem {
+                Label("AR", systemImage: "5.circle")
+            }.tag(4)
         }
         .accentColor(colorScheme == .dark ? CblTheme.light : CblTheme.red)
         .onAppear { selectedTab = 0 }
